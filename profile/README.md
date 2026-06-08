@@ -1,25 +1,30 @@
-# OpenPhysics 👋
+# OpenPhysics
 
-Welcome to the **OpenPhysics** organization! We develop open-source, interactive physics simulations, frameworks, and Open Educational Resources (OER) designed to make physics intuitive, visual, and accessible on the web.
+> Open-source physics simulations, tools, and educational resources — built for the web.
+
+OpenPhysics develops interactive simulations and libraries that make physics intuitive, visual, and accessible. Our work spans classroom-ready OER tools, real-time web simulations, and hardware-interfacing libraries for advanced lab instrumentation.
 
 ---
 
-## 🌊 Interactive Simulations
+## Interactive Simulations
 
-Our core focus is creating responsive, high-fidelity visual tools for physics classrooms and independent exploration.
+Responsive, high-fidelity visual tools for physics classrooms and independent exploration, built using ScenerySTack. Port of PhET simulations.
 
-* **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** – An interactive simulation exploring wave mechanics, sound propagation, and the Doppler effect.
-* **[LadyBug](https://github.com/OpenPhysics/LadyBug)** – Interactive layouts and mechanics simulations for tracking motion and kinematics.
-* **[MazeGame](https://github.com/OpenPhysics/MazeGame)** – Simple interactive physics-driven game mechanics.
-* **[LunarLander](https://github.com/OpenPhysics/LunarLander)** – Attempt to land a probe on the Moon.
+| Simulation | Description |
+| :--- | :--- |
+| **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** | Explore wave mechanics, sound propagation, and the Doppler effect in real time |
+| **[LadyBug](https://github.com/OpenPhysics/LadyBug)** | Track position, velocity, and acceleration for 1D and 2D kinematics |
+| **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | Pilot a probe to the lunar surface — test your intuition for thrust and gravity |
+| **[MazeGame](https://github.com/OpenPhysics/MazeGame)** | Physics-driven game mechanics for motion and forces |
 
+---
 
-## 📦 Core Libraries & Frameworks
+## Libraries & Instrumentation
 
-We build and maintain underlying packages to power the CD48 coincidence counter.
+Tools for interfacing with physics lab hardware, including the **CD48 coincidence counter** used in quantum optics experiments.
 
-| Repository | Description | Language / Stack|
+| Package | Description | Language |
 | :--- | :--- | :--- |
-| **[tscd48](https://github.com/OpenPhysics/tscd48)** | Core simulation engine and calculations | TypeScript |
-| **[jscd48](https://github.com/OpenPhysics/jscd48)** | JavaScript interface and bundle integrations | JavaScript |
-| **[pycd48](https://github.com/OpenPhysics/pycd48)** | Python interface and bundle integrations | Python |
+| **[tscd48](https://github.com/OpenPhysics/tscd48)** | TypeScript driver and analysis library for the CD48 | TypeScript |
+| **[jscd48](https://github.com/OpenPhysics/jscd48)** | JavaScript interface and browser bundle | JavaScript |
+| **[pycd48](https://github.com/OpenPhysics/pycd48)** | Python interface for data acquisition and Jupyter workflows | Python |
