@@ -11,12 +11,15 @@ Our core focus is creating responsive, high-fidelity visual tools for physics cl
 * **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** – An interactive simulation exploring wave mechanics, sound propagation, and the Doppler effect.
 * **[LadyBug](https://github.com/OpenPhysics/LadyBug)** – Interactive layouts and mechanics simulations for tracking motion and kinematics.
 * **[MazeGame](https://github.com/OpenPhysics/MazeGame)** – Simple interactive physics-driven game mechanics.
+* **[LunarLander](https://github.com/OpenPhysics/LunarLander)** – Attempt to land a probe on the Moon.
+
 
 ## 📦 Core Libraries & Frameworks
 
-We build and maintain underlying packages to power web-based simulations and high-performance physics modeling.
+We build and maintain underlying packages to power the CD48 coincidence counter.
 
-| Repository | Description | Language / Stack |
+| Repository | Description | Language / Stack|
 | :--- | :--- | :--- |
 | **[tscd48](https://github.com/OpenPhysics/tscd48)** | Core simulation engine and calculations | TypeScript |
 | **[jscd48](https://github.com/OpenPhysics/jscd48)** | JavaScript interface and bundle integrations | JavaScript |
+| **[pycd48](https://github.com/OpenPhysics/pycd48)** | Python interface and bundle integrations | Python |
