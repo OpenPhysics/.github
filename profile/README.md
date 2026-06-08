@@ -8,11 +8,17 @@ OpenPhysics develops interactive simulations and libraries that make physics int
 
 ## Interactive Simulations
 
-Responsive, high-fidelity visual tools for physics classrooms and independent exploration, built using ScenerySTack. Port of PhET simulations.
+Responsive, high-fidelity visual tools for physics classrooms and independent exploration, built using SceneryStack.
 
 | Simulation | Description |
 | :--- | :--- |
 | **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** | Explore wave mechanics, sound propagation, and the Doppler effect in real time |
+
+Port of PhET simulations.
+
+| Simulation | Description |
+| :--- | :--- |
+| **[RadioWaves](https://github.com/OpenPhysics/RadioWaves)** | Explore wave propagation of the Electric field |
 | **[LadyBug](https://github.com/OpenPhysics/LadyBug)** | Track position, velocity, and acceleration for 1D and 2D kinematics |
 | **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | Pilot a probe to the lunar surface — test your intuition for thrust and gravity |
 | **[MazeGame](https://github.com/OpenPhysics/MazeGame)** | Physics-driven game mechanics for motion and forces |
