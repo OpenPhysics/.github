@@ -10,29 +10,29 @@ OpenPhysics develops interactive simulations and libraries that make physics int
 
 High-fidelity visual tools and modeling platforms for physics classrooms and independent exploration, primarily built using SceneryStack.
 
-| Simulation / Tool | Description | Language |
-| :--- | :--- | :--- |
-| **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** | Explore wave mechanics, sound propagation, and the Doppler effect using SceneryStack | TypeScript |
-| **[TrackLab](https://github.com/OpenPhysics/TrackLab)** | Video modeling, tracking, and analysis platform for physical motion (PWA) | TypeScript |
-| **[OpticsLab](https://github.com/OpenPhysics/OpticsLab)** | Interactive simulation of ray optics and light propagation dynamics | TypeScript |
-| **[Resonance](https://github.com/OpenPhysics/Resonance)** | A dedicated simulation exploring the resonances of various oscillators | TypeScript |
-| **[OscillationsAndChaos](https://github.com/OpenPhysics/OscillationsAndChaos)** | Visualizing chaotic systems, pendulums, and complex harmonic motion | TypeScript |
 
+| Simulation / Tool | Description |
+| --- | --- |
+| **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** | Explore wave mechanics, sound propagation, and the Doppler effect using SceneryStack |
+| **[TrackLab](https://github.com/OpenPhysics/TrackLab)** | Video modeling, tracking, and analysis platform for physical motion (PWA) |
+| **[OpticsLab](https://github.com/OpenPhysics/OpticsLab)** | Interactive simulation of ray optics and light propagation dynamics |
+| **[Resonance](https://github.com/OpenPhysics/Resonance)** | A dedicated simulation exploring the resonances of various oscillators |
+| **[OscillationsAndChaos](https://github.com/OpenPhysics/OscillationsAndChaos)** | Visualizing chaotic systems, pendulums, and complex harmonic motion |
 
 ### Classic Kinematics & PhET Ports
+
 Modern web-native adaptations of classic interactive physics concepts and educational mechanics games.
 
-| Simulation | Description | Language |
-| :--- | :--- | :--- |
-| **[RadioWaves](https://github.com/OpenPhysics/RadioWaves)** | Explore wave propagation and the behavior of radiation fields | TypeScript |
-| **[LadyBug](https://github.com/OpenPhysics/LadyBug)** | Kinematics simulation tracking position, velocity, and acceleration vectors | TypeScript |
-| **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | Pilot a probe to the lunar surface — test your intuition for thrust, mass, and gravity | TypeScript |
-| **[MazeGame](https://github.com/OpenPhysics/MazeGame)** | Physics-driven game mechanics designed to teach directional forces and velocity | TypeScript |
-| **[MovingMan](https://github.com/OpenPhysics/MovingMan)** | Classic mechanics simulation charting a walking figure's position, velocity, and acceleration graph lines | TypeScript |
-| **[ElectricFieldOfDreams](https://github.com/OpenPhysics/ElectricFieldOfDreams)** | Interactive visualization of electric fields, equipotential lines, and charge dynamics | TypeScript |
+| Simulation | Description |
+| --- | --- |
+| **[RadioWaves](https://github.com/OpenPhysics/RadioWaves)** | Explore wave propagation and the behavior of radiation fields |
+| **[LadyBug](https://github.com/OpenPhysics/LadyBug)** | Kinematics simulation tracking position, velocity, and acceleration vectors |
+| **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | Pilot a probe to the lunar surface — test your intuition for thrust, mass, and gravity |
+| **[MazeGame](https://github.com/OpenPhysics/MazeGame)** | Physics-driven game mechanics designed to teach directional forces and velocity |
+| **[MovingMan](https://github.com/OpenPhysics/MovingMan)** | Classic mechanics simulation charting a walking figure's position, velocity, and acceleration graph lines |
+| **[ElectricFieldOfDreams](https://github.com/OpenPhysics/ElectricFieldOfDreams)** | Interactive visualization of electric fields, equipotential lines, and charge dynamics |
 
-**[TemplateSingleSim](https://github.com/OpenPhysics/TemplateSingleSim)**  is a starter template and structural architecture for spinning up individual simulations
-
+**[TemplateSingleSim](https://github.com/OpenPhysics/TemplateSingleSim)** is a starter template and structural architecture for spinning up individual simulations.
 ---
 
 ## Hardware Instrumentation & Libraries
@@ -47,11 +47,7 @@ Cross-platform tools and drivers for interfacing with physical laboratory hardwa
 
 ---
 
-## Frameworks & Infrastructure
+## VPython
 
-Templates and core developer utilities ensuring ecosystem stability and straightforward staging for new interactive tools.
-
-| Repository | Description | Language |
-| :--- | :--- | :--- |
-| **[pyro](https://github.com/OpenPhysics/pyro)** | Internal core physics utility ecosystem or helper framework | TypeScript |
-
+**[pyro](https://github.com/OpenPhysics/pyro)** 
+is modern single-page web application for writing and running VPython code directly in the browser with 3D visualization.
