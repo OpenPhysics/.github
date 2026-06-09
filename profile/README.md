@@ -33,6 +33,7 @@ Modern web-native adaptations of classic interactive physics concepts and educat
 | **[ElectricFieldOfDreams](https://github.com/OpenPhysics/ElectricFieldOfDreams)** | Interactive visualization of electric fields, equipotential lines, and charge dynamics |
 
 **[TemplateSingleSim](https://github.com/OpenPhysics/TemplateSingleSim)** is a starter template and structural architecture for spinning up individual simulations.
+
 ---
 
 ## Hardware Instrumentation & Libraries
