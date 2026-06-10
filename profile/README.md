@@ -10,7 +10,7 @@ OpenPhysics develops interactive simulations and libraries that make physics int
 
 High-fidelity visual tools and modeling platforms for physics classrooms and independent exploration, primarily built using SceneryStack.
 
-| Simulation / Tool | Description |
+| Simulation  | Description |
 | --- | --- |
 | **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** | Explore wave mechanics, sound propagation, and the Doppler effect using SceneryStack |
 | **[TrackLab](https://github.com/OpenPhysics/TrackLab)** | Video modeling, tracking, and analysis platform for physical motion (PWA) |
