@@ -10,7 +10,6 @@ OpenPhysics develops interactive simulations and libraries that make physics int
 
 High-fidelity visual tools and modeling platforms for physics classrooms and independent exploration, primarily built using SceneryStack.
 
-
 | Simulation / Tool | Description |
 | --- | --- |
 | **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** | Explore wave mechanics, sound propagation, and the Doppler effect using SceneryStack |
@@ -18,6 +17,8 @@ High-fidelity visual tools and modeling platforms for physics classrooms and ind
 | **[OpticsLab](https://github.com/OpenPhysics/OpticsLab)** | Interactive simulation of ray optics and light propagation dynamics |
 | **[Resonance](https://github.com/OpenPhysics/Resonance)** | A dedicated simulation exploring the resonances of various oscillators |
 | **[OscillationsAndChaos](https://github.com/OpenPhysics/OscillationsAndChaos)** | Visualizing chaotic systems, pendulums, and complex harmonic motion |
+| **[WaveComposer](https://github.com/OpenPhysics/WaveComposer)** | Interactive wave composition and superposition simulation |
+| **[QubitSketch](https://github.com/OpenPhysics/QubitSketch)** | Visual modeling and simulation tool for qubits and quantum states |
 
 ### Classic Kinematics & PhET Ports
 
@@ -27,7 +28,7 @@ Modern web-native adaptations of classic interactive physics concepts and educat
 | --- | --- |
 | **[RadioWaves](https://github.com/OpenPhysics/RadioWaves)** | Explore wave propagation and the behavior of radiation fields |
 | **[LadyBug](https://github.com/OpenPhysics/LadyBug)** | Kinematics simulation tracking position, velocity, and acceleration vectors |
-| **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | Pilot a probe to the lunar surface : test your intuition for thrust, mass, and gravity |
+| **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | Pilot a probe to the lunar surface: test your intuition for thrust, mass, and gravity |
 | **[MazeGame](https://github.com/OpenPhysics/MazeGame)** | Physics-driven game mechanics designed to teach directional forces and velocity |
 | **[MovingMan](https://github.com/OpenPhysics/MovingMan)** | Classic mechanics simulation charting a walking figure's position, velocity, and acceleration graph lines |
 | **[ElectricFieldOfDreams](https://github.com/OpenPhysics/ElectricFieldOfDreams)** | Interactive visualization of electric fields, equipotential lines, and charge dynamics |
@@ -50,5 +51,4 @@ Cross-platform tools and drivers for interfacing with physical laboratory hardwa
 
 ## VPython
 
-**[pyro](https://github.com/OpenPhysics/pyro)** 
-is modern single-page web application for writing and running VPython code directly in the browser with 3D visualization.
+**[pyro](https://github.com/OpenPhysics/pyro)** is a 3D physics rendering framework for web-based VPython environments.
