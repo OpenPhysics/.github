@@ -1,6 +1,6 @@
 # OpenPhysics
 
-> Open-source physics simulations, tools, and educational resources — built for the web.
+> Open-source physics simulations, tools, and educational resources, built for the web.
 
 OpenPhysics develops interactive simulations and libraries that make physics intuitive, visual, and accessible. Our work spans classroom-ready OER tools, real-time web simulations, and hardware-interfacing libraries for advanced lab instrumentation.
 
@@ -27,7 +27,7 @@ Modern web-native adaptations of classic interactive physics concepts and educat
 | --- | --- |
 | **[RadioWaves](https://github.com/OpenPhysics/RadioWaves)** | Explore wave propagation and the behavior of radiation fields |
 | **[LadyBug](https://github.com/OpenPhysics/LadyBug)** | Kinematics simulation tracking position, velocity, and acceleration vectors |
-| **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | Pilot a probe to the lunar surface — test your intuition for thrust, mass, and gravity |
+| **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | Pilot a probe to the lunar surface : test your intuition for thrust, mass, and gravity |
 | **[MazeGame](https://github.com/OpenPhysics/MazeGame)** | Physics-driven game mechanics designed to teach directional forces and velocity |
 | **[MovingMan](https://github.com/OpenPhysics/MovingMan)** | Classic mechanics simulation charting a walking figure's position, velocity, and acceleration graph lines |
 | **[ElectricFieldOfDreams](https://github.com/OpenPhysics/ElectricFieldOfDreams)** | Interactive visualization of electric fields, equipotential lines, and charge dynamics |
