@@ -1,0 +1,209 @@
+# CLAUDE.md — OpenPhysics SceneryStack Simulations
+
+General guidance for AI assistants working on **any** OpenPhysics SceneryStack simulation repository.
+
+Each sim repo has its own `CLAUDE.md` with **sim-specific** context only (architecture, key files, physics, quirks). Read that file first, then use this document for shared conventions.
+
+Community files (contributing, license, issue templates) live in [OpenPhysics/.github](https://github.com/OpenPhysics/.github). Simulation READMEs follow a fixed six-section outline documented in [.github/README.md](README.md).
+
+## Tech stack
+
+| Tool | Version | Notes |
+|---|---|---|
+| SceneryStack | ^3.0.0 | Simulation framework (PhET-derived) |
+| Vite | ^8 | Build tool and dev server |
+| TypeScript | ^6 | `erasableSyntaxOnly` — no `enum` or `namespace` |
+| Biome | ^2.4 | Linting + formatting (not ESLint, not Prettier) |
+| vite-plugin-pwa | ^1 | PWA / offline / installable |
+
+Some sims add Vitest, Playwright, or OpenCV.js — see the sim's `CLAUDE.md` and `package.json`.
+
+## Bootstrap import chain
+
+`src/main.ts` must have `import "./brand.js"` as its **very first import**. This triggers:
+
+```
+brand.ts → splash.ts → assert.ts → init.ts
+```
+
+**Never reorder these imports.** SceneryStack fails silently or throws cryptic errors if the chain breaks.
+
+Standard bootstrap files in every sim:
+
+| File | Purpose |
+|---|---|
+| `src/init.ts` | Sim name, version, locales — start of chain |
+| `src/assert.ts` | Enables runtime assertions |
+| `src/splash.ts` | Splash screen while loading |
+| `src/brand.ts` | Brand registration (logo, copyright, links) |
+| `src/main.ts` | Entry point — imports `brand.js` first |
+
+## Standard layout
+
+Most single-screen sims follow:
+
+```
+src/
+  init.ts assert.ts splash.ts brand.ts main.ts
+  *Colors.ts *Namespace.ts
+  i18n/StringManager.ts strings_*.json
+  <sim-screen>/
+    *Screen.ts
+    model/   ← state, physics, step(dt), reset()
+    view/    ← Scenery nodes, layout, input
+scripts/generate-icons.ts
+.github/workflows/ci.yml   ← calls OpenPhysics/.github reusable CI
+```
+
+Multi-screen sims add one folder per screen (e.g. `composer-screen/`, `single-oscillator/`). Shared code often lives in `src/common/`.
+
+## Coding conventions
+
+- **No `enum`** — use `const SomeEnum = { ... } as const` (TS6 `erasableSyntaxOnly`)
+- **No `namespace`** — use modules or classes with static members
+- **`import type`** required for type-only imports (`verbatimModuleSyntax`)
+- **Formatter**: 2-space indent, 120-char line width, double quotes, always semicolons
+- **Colors** → `*Colors.ts` as `ProfileColorProperty` — never hardcode hex/rgb in views
+- **Strings** → `strings_*.json` + `StringManager` — never hardcode display text in views
+- **Layout** → `this.layoutBounds` and shared layout constants — avoid magic pixel values
+- **Model/view split** — model classes must not import from view
+
+## SceneryStack patterns
+
+### Properties (reactive state)
+
+```typescript
+import { NumberProperty, DerivedProperty } from "scenerystack/axon";
+
+const massProperty = new NumberProperty(0.25);
+massProperty.link((value) => { /* react */ });
+
+const frequencyProperty = new DerivedProperty(
+  [massProperty, springConstantProperty],
+  (m, k) => Math.sqrt(k / m) / (2 * Math.PI),
+);
+```
+
+Use `TReadOnlyProperty<T>` for read-only constructor parameters.
+
+### Color profiles
+
+```typescript
+import { ProfileColorProperty, Color } from "scenerystack/scenery";
+
+const springProperty = new ProfileColorProperty(namespace, "spring", {
+  default: new Color(255, 100, 100),
+  projector: new Color(204, 0, 0),
+});
+```
+
+### Model–view–screen
+
+```typescript
+class MyScreen extends Screen<MyModel, MyScreenView> {
+  constructor(options: ScreenOptions) {
+    super(() => new MyModel(), (model) => new MyScreenView(model), options);
+  }
+}
+```
+
+Models implement `step(dt)` and `reset()`. Views update from model properties via `.link()` or `step(dt)`.
+
+### Internationalization
+
+Add keys to `strings_en.json` and **every** locale file. Expose via `StringManager` getters. TypeScript errors if locales diverge — intentional.
+
+## SceneryStack module paths
+
+```
+scenerystack/sim          Sim, Screen, ScreenView, PreferencesModel, onReadyToLaunch
+scenerystack/axon         Property, BooleanProperty, NumberProperty, DerivedProperty, TReadOnlyProperty
+scenerystack/scenery      Node, Rectangle, Circle, Text, ProfileColorProperty, VBox, HBox
+scenerystack/scenery-phet ResetAllButton, ArrowNode, NumberControl, NumberDisplay
+scenerystack/dot          Vector2, Dimension2, Range, Bounds2, Complex
+scenerystack/tandem       Tandem
+scenerystack/phet-core    Namespace, optionize
+scenerystack/chipper      LocalizedString
+scenerystack/joist        TModel
+scenerystack/init         init, madeWithSceneryStackSplashDataURI
+scenerystack/brand        brand, TBrand
+scenerystack/assert       enableAssert
+scenerystack/splash       (side-effect import)
+```
+
+Import `.ts` sources with `.js` extensions in import paths.
+
+## Adding simulation content
+
+1. **Model** — add `Property<T>` fields; reset each in `reset()`
+2. **View** — create `Node` subclasses; link to model properties
+3. **Colors** — add `ProfileColorProperty` entries to `*Colors.ts`
+4. **Strings** — add keys to all locale JSON files; expose in `StringManager`
+5. **Preferences** — extend `PreferencesModel` options in `src/main.ts` when needed
+
+## Common commands
+
+Run before opening a PR (add `npm test` when the sim defines it):
+
+```bash
+npm run lint && npm run check && npm run build
+```
+
+| Command | Description |
+|---|---|
+| `npm start` / `npm run dev` | Vite dev server → http://localhost:5173 |
+| `npm run build` | Type-check + production build → `dist/` |
+| `npm run preview` | Preview production build |
+| `npm run check` | TypeScript (`tsc --noEmit`) |
+| `npm run lint` | Biome check |
+| `npm run format` | Biome format |
+| `npm run fix` | Biome check --write |
+| `npm run icons` | Regenerate PWA icons from `public/icons/icon.svg` |
+| `npm run clean` | Remove `dist/` |
+
+## TypeScript 6 notes
+
+- `erasableSyntaxOnly` rejects `enum` and `namespace`
+- `verbatimModuleSyntax` requires explicit `import type` for type-only symbols
+- `noUncheckedSideEffectImports` — side-effect imports must be in package exports
+
+## CI
+
+Each sim's `.github/workflows/ci.yml` calls the reusable workflow:
+
+```yaml
+uses: OpenPhysics/.github/.github/workflows/ci.yml@main
+```
+
+On push/PR to `main`: `npm run check`, `npm run lint`, `npm run icons && npm run build`.
+
+## Unit tests (when present)
+
+Vitest tests often live in `__tests__/` next to source:
+
+```typescript
+import { describe, it, expect, beforeEach } from "vitest";
+```
+
+Co-locate tests with the module they cover; follow patterns in the sim's `CLAUDE.md` if it defines sim-specific test commands.
+
+## Git hooks
+
+All SceneryStack sims ship `.githooks/pre-commit` and `.githooks/pre-push`:
+
+| Hook | Action |
+|---|---|
+| **pre-commit** | `npm run fix` on staged `.ts`/`.js`/`.json`/`.html` files, then re-stage |
+| **pre-push** | `npm run lint` and `npm run check` |
+
+Hooks activate automatically on `npm install` via the `prepare` script (no-op outside a git repo):
+
+```json
+"prepare": "git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git config core.hooksPath .githooks || true"
+```
+
+To bypass hooks in an emergency: `git commit --no-verify` / `git push --no-verify`.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Do not add per-repo `CONTRIBUTING.md` or `LICENSE` — org defaults apply.
