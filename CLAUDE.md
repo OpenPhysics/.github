@@ -115,6 +115,38 @@ Models implement `step(dt)` and `reset()`. Views update from model properties vi
 
 Add keys to `strings_en.json` and **every** locale file. Expose via `StringManager` getters. TypeScript errors if locales diverge — intentional.
 
+### Keyboard-help dialog
+
+Every sim wires the navigation-bar keyboard-help (`?`) dialog through each **Screen** — never in `main.ts`/`init.ts`. Add a `<SimName>KeyboardHelpContent` class in the sim's `view/` (or `common/view/` for multi-screen sims) that extends `TwoColumnKeyboardHelpContent`, and pass it via the `createKeyboardHelpNode` screen option:
+
+```typescript
+import {
+  BasicActionsKeyboardHelpSection,
+  ComboBoxKeyboardHelpSection,
+  SliderControlsKeyboardHelpSection,
+  TwoColumnKeyboardHelpContent,
+} from "scenerystack/scenery-phet";
+
+export class MyKeyboardHelpContent extends TwoColumnKeyboardHelpContent {
+  public constructor() {
+    super(
+      // Left column: the interaction-specific sections this sim actually uses.
+      [new SliderControlsKeyboardHelpSection(), new ComboBoxKeyboardHelpSection()],
+      // Right column: Tab/button navigation (+ checkbox toggling when present).
+      [new BasicActionsKeyboardHelpSection({ withCheckboxContent: true })],
+    );
+  }
+}
+
+// in the Screen — keep the default after `...options`:
+super(() => new MyModel(), (model) => new MyScreenView(model), {
+  ...options,
+  createKeyboardHelpNode: () => new MyKeyboardHelpContent(),
+});
+```
+
+Compose only the standard sections the sim actually has (slider / combo box / checkbox). For a sim with no sliders or combo boxes, use a single column: `super([new BasicActionsKeyboardHelpSection()], [])`. Standard sections carry their own i18n, so no new strings are needed unless you hand-author custom `KeyboardHelpSection` rows.
+
 ## SceneryStack module paths
 
 ```
