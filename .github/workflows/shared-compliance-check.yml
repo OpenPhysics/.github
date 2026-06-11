@@ -19,7 +19,16 @@ jobs:
     if: github.event_name == 'workflow_call'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Check out the repository under test
+        uses: actions/checkout@v6
+
+      # The compliance script lives in this org-config repo, not in the caller,
+      # so check it out alongside and run it against the caller's working tree.
+      - name: Check out OpenPhysics/.github for the compliance script
+        uses: actions/checkout@v6
+        with:
+          repository: OpenPhysics/.github
+          path: .org-compliance
 
       - name: Run compliance checks
         run: |
@@ -28,7 +37,8 @@ jobs:
             REPO="${{ github.event.repository.name }}"
           fi
           echo "Checking repository: $REPO"
-          ./.github/scripts/check-repo-compliance.sh "$PWD"
+          GITHUB_REPOSITORY="OpenPhysics/$REPO" \
+            bash .org-compliance/.github/scripts/check-repo-compliance.sh "$PWD"
 
   check-all:
     if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
