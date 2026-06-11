@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Tooling for the OpenPhysics org config repo: repo metadata helpers and simulation screenshot capture.",
   "scripts": {
-    "screenshots": "bash .github/scripts/generate-screenshots.sh"
+    "screenshots": "bash scripts/generate-screenshots.sh"
   },
   "devDependencies": {
     "playwright": "^1.60.0"

@@ -6,7 +6,7 @@ on:
     branches: [main]
     paths:
       - "config/dependabot-*.yml"
-      - ".github/scripts/sync-dependabot.sh"
+      - "scripts/sync-dependabot.sh"
 
 permissions:
   contents: read
@@ -28,4 +28,4 @@ jobs:
           done
 
       - name: Validate sync script syntax
-        run: bash -n .github/scripts/sync-dependabot.sh
+        run: bash -n scripts/sync-dependabot.sh

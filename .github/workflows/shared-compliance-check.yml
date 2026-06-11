@@ -40,7 +40,7 @@ jobs:
           fi
           echo "Checking repository: $REPO"
           GITHUB_REPOSITORY="OpenPhysics/$REPO" \
-            bash .org-compliance/.github/scripts/check-repo-compliance.sh "$PWD"
+            bash .org-compliance/scripts/check-repo-compliance.sh "$PWD"
 
   check-all:
     if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
@@ -62,7 +62,7 @@ jobs:
             echo "======== $sim ========"
             WORKDIR=$(mktemp -d)
             gh repo clone "OpenPhysics/$sim" "$WORKDIR" -- --depth 1
-            if ! ./.github/scripts/check-repo-compliance.sh "$WORKDIR"; then
+            if ! ./scripts/check-repo-compliance.sh "$WORKDIR"; then
               FAILED=1
             fi
             rm -rf "$WORKDIR"

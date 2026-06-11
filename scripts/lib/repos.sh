@@ -4,8 +4,8 @@ set -euo pipefail
 
 REPOS_LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPOS_SCRIPT_DIR="${REPOS_SCRIPT_DIR:-$REPOS_LIB_DIR/..}"
-REPOS_JSON="${REPOS_JSON:-$REPOS_SCRIPT_DIR/../../structure/repos.json}"
-OPENPHYSICS_WORKSPACE="${OPENPHYSICS_WORKSPACE:-$(cd "$REPOS_SCRIPT_DIR/../../.." && pwd)}"
+REPOS_JSON="${REPOS_JSON:-$REPOS_SCRIPT_DIR/../structure/repos.json}"
+OPENPHYSICS_WORKSPACE="${OPENPHYSICS_WORKSPACE:-$(cd "$REPOS_SCRIPT_DIR/../.." && pwd)}"
 
 FILTER_TYPE=""
 FILTER_STATUS=""

@@ -6,7 +6,7 @@ on:
     paths:
       - "docs/**"
       - "structure/repos.json"
-      - ".github/scripts/generate-pages-index.sh"
+      - "scripts/generate-pages-index.sh"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Generate landing page
-        run: .github/scripts/generate-pages-index.sh
+        run: scripts/generate-pages-index.sh
 
       - name: Setup Pages
         uses: actions/configure-pages@v6

@@ -14,7 +14,7 @@
 # (`npm install` in the repo root once), jq, and a built sim or its npm deps.
 #
 # Usage:
-#   .github/scripts/generate-screenshots.sh [options] [SIM ...]
+#   scripts/generate-screenshots.sh [options] [SIM ...]
 #
 # Options:
 #   --build         Force `npm run build` even if dist/ already exists.
@@ -27,8 +27,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# Repo root is two levels up from .github/scripts.
-REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+# Repo root is one level up from scripts/.
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 # Workspace is the directory holding the org repo and the sibling sim repos.
 WORKSPACE="${OPENPHYSICS_WORKSPACE:-$(cd "$REPO_ROOT/.." && pwd)}"
 CATALOG="${OPENPHYSICS_CATALOG:-$REPO_ROOT/structure/repos.json}"

@@ -34,26 +34,26 @@ Primary entry point for agents. Reads `structure/repos.json` and adds computed f
 
 ```bash
 # All repository names
-.github/scripts/parse-repos.sh names
+scripts/parse-repos.sh names
 
 # Simulation repos only
-.github/scripts/parse-repos.sh names --simulation
+scripts/parse-repos.sh names --simulation
 
 # Full JSON with computed fields
-.github/scripts/parse-repos.sh list --format json --simulation
+scripts/parse-repos.sh list --format json --simulation
 
 # One repo
-.github/scripts/parse-repos.sh get DopplerEffect
+scripts/parse-repos.sh get DopplerEffect
 
 # Local checkout paths for sims that exist on disk
-.github/scripts/parse-repos.sh paths --simulation --require-local
+scripts/parse-repos.sh paths --simulation --require-local
 
 # Run a command per repo (env: REPO_NAME, REPO_HOMEPAGE, REPO_PATH, ...)
-.github/scripts/parse-repos.sh for-each --simulation -- \
+scripts/parse-repos.sh for-each --simulation -- \
   echo "$REPO_NAME -> $REPO_HOMEPAGE"
 
 # Catalog summary
-.github/scripts/parse-repos.sh summary
+scripts/parse-repos.sh summary
 ```
 
 Filters:
@@ -67,9 +67,9 @@ Filters:
 Updates GitHub **Description** and **Website** from `repos.json`:
 
 ```bash
-.github/scripts/sync-github-metadata.sh --dry-run
-.github/scripts/sync-github-metadata.sh
-.github/scripts/sync-github-metadata.sh --repo TemplateSingleSim
+scripts/sync-github-metadata.sh --dry-run
+scripts/sync-github-metadata.sh
+scripts/sync-github-metadata.sh --repo TemplateSingleSim
 ```
 
 Note: GitHub does not expose API toggles for **Deployments** / **Packages** in the About sidebar.
@@ -91,11 +91,11 @@ npm install
 # Capture every sim's first screen (reuses dist/ if already built)
 npm run screenshots
 # or directly:
-.github/scripts/generate-screenshots.sh
+scripts/generate-screenshots.sh
 
 # Force a rebuild first, capture a specific screen, or limit to some sims
-.github/scripts/generate-screenshots.sh --build
-.github/scripts/generate-screenshots.sh --screen 2 Resonance OscillationsAndChaos
+scripts/generate-screenshots.sh --build
+scripts/generate-screenshots.sh --screen 2 Resonance OscillationsAndChaos
 ```
 
 Options: `--build` (force `npm run build`), `--screen N` (default 1),
@@ -105,7 +105,7 @@ arguments limit the run to the named sims.
 `screenshot.mjs` is the underlying Playwright driver and can be run on a single dist directory:
 
 ```bash
-node .github/scripts/screenshot.mjs --dist ../DopplerEffect/dist --out /tmp/shot.png --screen 1
+node scripts/screenshot.mjs --dist ../DopplerEffect/dist --out /tmp/shot.png --screen 1
 ```
 
 It discovers a usable Chromium automatically (Playwright's bundled build, the newest cached
@@ -125,7 +125,7 @@ done
 Or call the CLI directly:
 
 ```bash
-.github/scripts/parse-repos.sh names --simulation
+scripts/parse-repos.sh names --simulation
 ```
 
 ## Workspace layout

@@ -16,7 +16,7 @@ not define their own.
 | [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/) | Bug report and feature request templates |
 | [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md) | Pull request template |
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | Reusable CI workflow (lint, type-check, build) |
-| [`.github/scripts/`](.github/scripts/) | Repo catalog tools, compliance checks, Dependabot sync |
+| [`scripts/`](scripts/) | Repo catalog tools, compliance checks, Dependabot sync |
 | [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) | Reusable GitHub Pages deploy workflow |
 | [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | Deploy org simulation index to GitHub Pages |
 | [`docs/`](docs/) | Landing page linking to live simulations ([openphysics.github.io/.github](https://openphysics.github.io/.github/)) |
@@ -71,18 +71,18 @@ Simulation READMEs use a fixed six-section outline (in order): **Features → Qu
 Run locally against a checkout:
 
 ```bash
-.github/scripts/check-repo-compliance.sh /path/to/sim-repo
+scripts/check-repo-compliance.sh /path/to/sim-repo
 ```
 
 ### Repository catalog scripts
 
-See [`.github/scripts/README.md`](.github/scripts/README.md) for tools that parse
+See [`scripts/README.md`](scripts/README.md) for tools that parse
 [`structure/repos.json`](structure/repos.json):
 
 ```bash
-.github/scripts/parse-repos.sh names --simulation
-.github/scripts/list-repos.sh --json
-.github/scripts/sync-github-metadata.sh --dry-run
+scripts/parse-repos.sh names --simulation
+scripts/list-repos.sh --json
+scripts/sync-github-metadata.sh --dry-run
 ```
 
 ## Repository catalog
