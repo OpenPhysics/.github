@@ -13,7 +13,8 @@ A screen's top-level model implements `TModel` from `scenerystack/joist`, which 
 
 ```typescript
 import type { TModel } from "scenerystack/joist";
-import { NumberProperty, Vector2Property, BooleanProperty } from "scenerystack/axon";
+import { BooleanProperty, NumberProperty } from "scenerystack/axon";
+import { Range, Vector2, Vector2Property } from "scenerystack/dot";
 
 export class SimModel implements TModel {
   public readonly positionProperty: Vector2Property;

@@ -20,7 +20,7 @@ All three import from `scenerystack/scenery`. Prefer **`RichDragListener`** for 
 Let the listener own the model↔view conversion. Give it the model `positionProperty`, the `ModelViewTransform2`, and optional `dragBoundsProperty` (in model coordinates). The listener writes model coordinates straight back into the property; your node updates because it already links to that property.
 
 ```typescript
-import { DragListener, KeyboardDragListener } from "scenerystack/scenery";
+import { DragListener, KeyboardDragListener, RichDragListener } from "scenerystack/scenery";
 
 // node follows the model
 model.positionProperty.link((position) => {

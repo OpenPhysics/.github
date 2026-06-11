@@ -26,7 +26,7 @@ description: Use whenever a view needs display text, or you add/rename/remove us
 2. **`src/i18n/StringManager.ts`** — a singleton that turns the JSON into nested `StringProperty`s and exposes typed getters:
 
 ```typescript
-import { LocalizedString, type ReadOnlyProperty } from "scenerystack";
+import { LocalizedString } from "scenerystack/chipper";
 import stringsEn from "./strings_en.json";
 import stringsFr from "./strings_fr.json";
 

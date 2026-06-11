@@ -37,6 +37,8 @@ A **screen summary** describes the whole screen at the top of the PDOM — overr
 When model state changes, speak it by queuing an accessible response on a node in the PDOM. Pass a `StringProperty` for simple alerts, or an `Utterance` when you need de-duplication / priority / delay:
 
 ```typescript
+import { Utterance } from "scenerystack/utterance-queue";
+
 // simple, one-off alert
 descriptionAlertNode.addAccessibleResponse(a11yStrings.collisionAlertStringProperty);
 

@@ -12,14 +12,23 @@ URL query parameters configure a sim at launch (`index.html?snapToGrid=true&grid
 One file per sim, conventionally `src/preferences/<sim>QueryParameters.ts`, exporting a frozen parsed object:
 
 ```typescript
+import { logGlobal } from "scenerystack/phet-core";
 import { QueryStringMachine } from "scenerystack/query-string-machine";
 import { GRID_SPACING_MIN_M, GRID_SPACING_MAX_M } from "../OpticsLabConstants.js";
+import opticsLab from "../OpticsLabNamespace.js";
 
 const opticsLabQueryParameters = QueryStringMachine.getAll({
   // boolean flag, on by default, exposed to end users
   enabledOpticalFiber: {
     type: "boolean",
     defaultValue: true,
+    public: true,
+  },
+
+  // another public startup toggle
+  snapToGrid: {
+    type: "boolean",
+    defaultValue: false,
     public: true,
   },
 
@@ -40,6 +49,9 @@ const opticsLabQueryParameters = QueryStringMachine.getAll({
   },
 });
 
+opticsLab.register("opticsLabQueryParameters", opticsLabQueryParameters);
+logGlobal("phet.opticsLab.opticsLabQueryParameters");
+
 export default opticsLabQueryParameters;
 ```
 
@@ -49,6 +61,8 @@ Consumers import the parsed object and read typed fields:
 import opticsLabQueryParameters from "./preferences/opticsLabQueryParameters.js";
 if (opticsLabQueryParameters.snapToGrid) { /* ... */ }
 ```
+
+Register the parsed object with the sim namespace so it is visible through the usual SceneryStack registry/debug paths. Use `logGlobal` only for parameters that should be inspectable from the console while developing.
 
 ## Schema entry fields
 
@@ -61,6 +75,7 @@ if (opticsLabQueryParameters.snapToGrid) { /* ... */ }
 
 - All parsing goes through `QueryStringMachine.getAll`; no manual `URLSearchParams` / `location.search`.
 - Pull `defaultValue`s and validation bounds from `*Constants.ts` (see scenerystack-constants) so a parameter's range matches the model's range.
+- Register the parsed object with the sim namespace (`simNamespace.register(...)`) after `getAll`.
 - Mark only genuinely user-facing parameters `public: true`; keep debug switches private.
 - Validate everything user-supplied with `isValidValue` — query strings are untrusted input.
 - A query parameter sets a **startup** value; if the user can change it live, wire it to a model `Property` and/or a preference (see scenerystack-preferences), don't re-read the URL later.

@@ -20,13 +20,13 @@ Some sims add Vitest, Playwright, or OpenCV.js — see the sim's `CLAUDE.md` and
 
 ## Bootstrap import chain
 
-`src/main.ts` must have `import "./brand.js"` as its **very first import**. This triggers:
+`src/main.ts` must have `import "./brand.js"` as its **very first import**. This triggers the import chain:
 
 ```
-brand.ts → splash.ts → assert.ts → init.ts
+main.ts → brand.ts → splash.ts → assert.ts → init.ts
 ```
 
-**Never reorder these imports.** SceneryStack fails silently or throws cryptic errors if the chain breaks.
+`init.ts` executes first, then `assert.ts`, `splash.ts`, and `brand.ts`. **Never reorder these imports.** SceneryStack fails silently or throws cryptic errors if the chain breaks.
 
 Standard bootstrap files in every sim:
 
@@ -37,6 +37,8 @@ Standard bootstrap files in every sim:
 | `src/splash.ts` | Splash screen while loading |
 | `src/brand.ts` | Brand registration (logo, copyright, links) |
 | `src/main.ts` | Entry point — imports `brand.js` first |
+
+`src/init.ts` also owns shared framework switches such as `availableLocales`, `allowLocaleSwitching`, and `colorProfiles` (including `"projector"` when Projector Mode is enabled).
 
 ## Standard layout
 
@@ -117,14 +119,18 @@ Add keys to `strings_en.json` and **every** locale file. Expose via `StringManag
 
 ```
 scenerystack/sim          Sim, Screen, ScreenView, PreferencesModel, onReadyToLaunch
-scenerystack/axon         Property, BooleanProperty, NumberProperty, DerivedProperty, TReadOnlyProperty
+scenerystack/axon         Property, BooleanProperty, NumberProperty, DerivedProperty, PatternStringProperty, TReadOnlyProperty
 scenerystack/scenery      Node, Rectangle, Circle, Text, ProfileColorProperty, VBox, HBox
 scenerystack/scenery-phet ResetAllButton, ArrowNode, NumberControl, NumberDisplay
-scenerystack/dot          Vector2, Dimension2, Range, Bounds2, Complex
+scenerystack/dot          Vector2, Vector2Property, Dimension2, Range, Bounds2, Complex
+scenerystack/phetcommon   ModelViewTransform2
+scenerystack/sun          Panel, Checkbox, ComboBox, dialog controls
 scenerystack/tandem       Tandem
 scenerystack/phet-core    Namespace, optionize
 scenerystack/chipper      LocalizedString
 scenerystack/joist        TModel
+scenerystack/query-string-machine  QueryStringMachine
+scenerystack/utterance-queue        Utterance, UtteranceQueue, AriaLiveAnnouncer
 scenerystack/init         init, madeWithSceneryStackSplashDataURI
 scenerystack/brand        brand, TBrand
 scenerystack/assert       enableAssert
