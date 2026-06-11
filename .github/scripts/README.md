@@ -8,6 +8,7 @@ the monorepo checkout.
 
 - [`jq`](https://jqlang.org/)
 - [`gh`](https://cli.github.com/) for GitHub sync commands
+- Node.js + `npm install` (in the repo root) for the screenshot scripts — installs Playwright
 
 ## Quick reference
 
@@ -20,6 +21,8 @@ the monorepo checkout.
 | [`check-repo-compliance.sh`](check-repo-compliance.sh) | README/CI compliance checks |
 | [`sync-dependabot.sh`](sync-dependabot.sh) | Copy Dependabot configs to sim repos |
 | [`generate-pages-index.sh`](generate-pages-index.sh) | Build `docs/index.html` simulation landing page |
+| [`generate-screenshots.sh`](generate-screenshots.sh) | Capture each sim's screen to `<sim>/assets/screenshot.png` |
+| [`screenshot.mjs`](screenshot.mjs) | Playwright driver behind `generate-screenshots.sh` |
 
 ## parse-repos.sh
 
@@ -70,6 +73,43 @@ Updates GitHub **Description** and **Website** from `repos.json`:
 ```
 
 Note: GitHub does not expose API toggles for **Deployments** / **Packages** in the About sidebar.
+
+## generate-screenshots.sh
+
+Captures a screenshot of every SceneryStack simulation into `<sim>/assets/screenshot.png`.
+It serves each sim's built `dist/` and renders the requested screen with the sim's **own**
+`ScreenshotGenerator` (the same code path as the in-app camera button), so the result is a
+clean PNG at the sim's nominal layout — not a raw viewport grab. Multi-screen sims are forced
+onto a single screen with `?screens=N`, so the capture is that screen's play area rather than
+the home-screen selector.
+
+```bash
+# One-time setup: install Playwright (declared in this repo's package.json)
+npm install
+# If Chromium is not already cached: npx playwright install chromium
+
+# Capture every sim's first screen (reuses dist/ if already built)
+npm run screenshots
+# or directly:
+.github/scripts/generate-screenshots.sh
+
+# Force a rebuild first, capture a specific screen, or limit to some sims
+.github/scripts/generate-screenshots.sh --build
+.github/scripts/generate-screenshots.sh --screen 2 Resonance OscillationsAndChaos
+```
+
+Options: `--build` (force `npm run build`), `--screen N` (default 1),
+`--width`/`--height` (default 1154×753, matching existing assets). Trailing positional
+arguments limit the run to the named sims.
+
+`screenshot.mjs` is the underlying Playwright driver and can be run on a single dist directory:
+
+```bash
+node .github/scripts/screenshot.mjs --dist ../DopplerEffect/dist --out /tmp/shot.png --screen 1
+```
+
+It discovers a usable Chromium automatically (Playwright's bundled build, the newest cached
+build, or a system Chromium); override with `PLAYWRIGHT_CHROMIUM_EXECUTABLE`.
 
 ## Bash helpers
 
