@@ -12,7 +12,8 @@ not define their own.
 | [`CLAUDE.md`](CLAUDE.md) | General AI-assistant guide for all SceneryStack sim repos |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Contributor Covenant v2.1 |
 | [`SECURITY.md`](SECURITY.md) | Security reporting via GitHub Security Advisories |
-| [`LICENSE`](LICENSE) | MIT license — org default for simulation repos |
+| [`LICENSE`](LICENSE) | GNU Affero GPL v3 — org default for simulation repos |
+| [`LICENSE-MIT`](LICENSE-MIT) | MIT license — used by CD48 hardware libraries (`jscd48`, `tscd48`) |
 | [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/) | Bug report and feature request templates |
 | [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md) | Pull request template |
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | Reusable CI workflow (lint, type-check, build) |
@@ -33,6 +34,9 @@ repos that do not have their own copies:
 
 SceneryStack simulation repos should **not** duplicate `CONTRIBUTING.md` or `LICENSE` at the repo root;
 link to the org defaults instead (see any sim `README.md` **Contributing** section).
+
+CD48 hardware libraries (`jscd48`, `tscd48`) keep their own MIT `LICENSE` at the repo root and do not
+inherit the org default.
 
 Each sim repo keeps a **sim-specific** [`CLAUDE.md`](CLAUDE.md) at its root; shared SceneryStack conventions, bootstrap chain, module paths, and CI live in **this** org [`CLAUDE.md`](CLAUDE.md). Do not add per-repo `AGENTS.md` — use `CLAUDE.md` instead.
 

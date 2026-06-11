@@ -46,4 +46,4 @@ This project follows the [OpenPhysics Code of Conduct](CODE_OF_CONDUCT.md). By p
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE) used by OpenPhysics repositories.
+By contributing, you agree that your contributions will be licensed under the [GNU Affero General Public License v3.0](LICENSE) used by OpenPhysics simulation repositories. CD48 hardware libraries (`jscd48`, `tscd48`) use the [MIT License](LICENSE-MIT) instead.

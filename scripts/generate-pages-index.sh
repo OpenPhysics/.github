@@ -449,7 +449,7 @@ SECTION
     </main>
 
     <footer>
-      <p>${total_count} live simulations &middot; Built with <a href="https://scenerystack.org/">SceneryStack</a> &middot; MIT License &middot;
+      <p>${total_count} live simulations &middot; Built with <a href="https://scenerystack.org/">SceneryStack</a> &middot; GNU Affero GPL v3 &middot;
       <a href="https://github.com/OpenPhysics/.github">OpenPhysics/.github</a></p>
     </footer>
   </div>
