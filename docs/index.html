@@ -148,7 +148,6 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      padding: 1.4rem;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -163,8 +162,9 @@
       position: absolute;
       inset: 0 0 auto 0;
       height: 3px;
+      z-index: 3;
       background: linear-gradient(90deg, hsl(var(--hue) 85% 65%), hsl(calc(var(--hue) + 45) 85% 62%));
-      opacity: 0.85;
+      opacity: 0.95;
     }
     .card:hover {
       transform: translateY(-4px);
@@ -173,20 +173,60 @@
       box-shadow: 0 16px 40px -16px hsl(var(--hue) 80% 55% / 0.55);
     }
 
-    .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    /* Screenshot preview */
+    .thumb {
+      position: relative;
+      aspect-ratio: 1154 / 753;
+      overflow: hidden;
+      background: linear-gradient(135deg, hsl(var(--hue) 45% 16%), hsl(calc(var(--hue) + 45) 45% 12%));
+      border-bottom: 1px solid var(--border);
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .card:hover .thumb img { transform: scale(1.05); }
+    .thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(8, 12, 24, 0.55));
+      pointer-events: none;
+    }
+    /* Fallback monogram tile when a sim has no screenshot committed yet */
+    .thumb.placeholder { display: grid; place-items: center; }
+    .thumb.placeholder span {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: hsl(var(--hue) 75% 80%);
+      opacity: 0.9;
+    }
+
     .badge {
+      position: absolute;
+      left: 0.85rem;
+      bottom: 0.85rem;
+      z-index: 2;
       display: grid;
       place-items: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       letter-spacing: 0.02em;
       color: #fff;
       background: linear-gradient(135deg, hsl(var(--hue) 80% 58%), hsl(calc(var(--hue) + 45) 78% 52%));
-      box-shadow: 0 6px 16px -6px hsl(var(--hue) 80% 55% / 0.7);
+      box-shadow: 0 6px 18px -6px hsl(var(--hue) 80% 50% / 0.95);
     }
+
+    .card-body { display: flex; flex: 1; flex-direction: column; padding: 1.3rem; }
+    .card-head { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.4rem; }
     .card-arrow {
       font-size: 1.2rem;
       color: var(--faint);
@@ -194,8 +234,8 @@
     }
     .card:hover .card-arrow { transform: translate(3px, -3px); color: hsl(var(--hue) 85% 70%); }
 
-    .card h3 { margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 650; color: var(--text); }
-    .card p { margin: 0 0 1.1rem; flex: 1; font-size: 0.9rem; color: var(--muted); }
+    .card h3 { margin: 0; font-size: 1.1rem; font-weight: 650; color: var(--text); }
+    .card p { margin: 0.5rem 0 1.1rem; flex: 1; font-size: 0.9rem; color: var(--muted); }
 
     .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
     .tag {
@@ -247,67 +287,81 @@
       </div>
       <div class="grid">
         <a class="card" href="https://openphysics.github.io/DopplerEffect/" style="--hue: 235;">
-          <div class="card-head">
-            <span class="badge">DE</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/DopplerEffect.webp" alt="Doppler Effect simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">DE</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Doppler Effect</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>Interactive simulation of the Doppler Effect — visualizes how the frequency of sound waves shifts with relative motion between source and observer.</p>
+            <div class="tags"><span class="tag">waves</span><span class="tag">sound</span><span class="tag">frequency</span></div>
           </div>
-          <h3>Doppler Effect</h3>
-          <p>Interactive simulation of the Doppler Effect — visualizes how the frequency of sound waves shifts with relative motion between source and observer.</p>
-          <div class="tags"><span class="tag">waves</span><span class="tag">sound</span><span class="tag">frequency</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/OpticsLab/" style="--hue: 177;">
-          <div class="card-head">
-            <span class="badge">OL</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/OpticsLab.webp" alt="Optics Lab simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">OL</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Optics Lab</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>Web-based geometric optics simulation. Supports ray sources, parallel and divergent beams, mirrors, lenses, beam splitters, and refraction interfaces.</p>
+            <div class="tags"><span class="tag">optics</span><span class="tag">geometric optics</span><span class="tag">reflection</span></div>
           </div>
-          <h3>Optics Lab</h3>
-          <p>Web-based geometric optics simulation. Supports ray sources, parallel and divergent beams, mirrors, lenses, beam splitters, and refraction interfaces.</p>
-          <div class="tags"><span class="tag">optics</span><span class="tag">geometric optics</span><span class="tag">reflection</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/OscillationsAndChaos/" style="--hue: 237;">
-          <div class="card-head">
-            <span class="badge">OA</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/OscillationsAndChaos.webp" alt="Oscillations And Chaos simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">OA</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Oscillations And Chaos</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>Collection of four classical mechanics simulations exploring oscillations and chaos: single spring, double spring, pendulum, and double pendulum.</p>
+            <div class="tags"><span class="tag">oscillations</span><span class="tag">chaos</span><span class="tag">springs</span></div>
           </div>
-          <h3>Oscillations And Chaos</h3>
-          <p>Collection of four classical mechanics simulations exploring oscillations and chaos: single spring, double spring, pendulum, and double pendulum.</p>
-          <div class="tags"><span class="tag">oscillations</span><span class="tag">chaos</span><span class="tag">springs</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/QubitSketch/" style="--hue: 47;">
-          <div class="card-head">
-            <span class="badge">QS</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/QubitSketch.webp" alt="Qubit Sketch simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">QS</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Qubit Sketch</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>Drag-and-drop quantum circuit builder with a live state simulator. Place quantum gates and watch probabilities, amplitudes, Bloch spheres, and measurements update in real time.</p>
+            <div class="tags"><span class="tag">quantum mechanics</span><span class="tag">quantum circuits</span><span class="tag">qubits</span></div>
           </div>
-          <h3>Qubit Sketch</h3>
-          <p>Drag-and-drop quantum circuit builder with a live state simulator. Place quantum gates and watch probabilities, amplitudes, Bloch spheres, and measurements update in real time.</p>
-          <div class="tags"><span class="tag">quantum mechanics</span><span class="tag">quantum circuits</span><span class="tag">qubits</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/Resonance/" style="--hue: 206;">
-          <div class="card-head">
-            <span class="badge">R</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/Resonance.webp" alt="Resonance simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">R</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Resonance</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>Interactive simulation of resonance in driven oscillating systems. Visualizes driven mass-spring systems and Chladni plate patterns.</p>
+            <div class="tags"><span class="tag">resonance</span><span class="tag">oscillations</span><span class="tag">waves</span></div>
           </div>
-          <h3>Resonance</h3>
-          <p>Interactive simulation of resonance in driven oscillating systems. Visualizes driven mass-spring systems and Chladni plate patterns.</p>
-          <div class="tags"><span class="tag">resonance</span><span class="tag">oscillations</span><span class="tag">waves</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/TrackLab/" style="--hue: 52;">
-          <div class="card-head">
-            <span class="badge">TL</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/TrackLab.webp" alt="Track Lab simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">TL</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Track Lab</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>Browser-based video motion-analysis tool. Load a video, calibrate real-world distances, and auto-track objects across frames using computer vision.</p>
+            <div class="tags"><span class="tag">kinematics</span><span class="tag">measurement</span><span class="tag">data analysis</span></div>
           </div>
-          <h3>Track Lab</h3>
-          <p>Browser-based video motion-analysis tool. Load a video, calibrate real-world distances, and auto-track objects across frames using computer vision.</p>
-          <div class="tags"><span class="tag">kinematics</span><span class="tag">measurement</span><span class="tag">data analysis</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/WaveComposer/" style="--hue: 163;">
-          <div class="card-head">
-            <span class="badge">WC</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/WaveComposer.webp" alt="Wave Composer simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">WC</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Wave Composer</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>Three-screen VoceVista-style real-time voice-analysis simulation. Analyzes microphone input for waveform, spectrum, and composition.</p>
+            <div class="tags"><span class="tag">waves</span><span class="tag">acoustics</span><span class="tag">Fourier analysis</span></div>
           </div>
-          <h3>Wave Composer</h3>
-          <p>Three-screen VoceVista-style real-time voice-analysis simulation. Analyzes microphone input for waveform, spectrum, and composition.</p>
-          <div class="tags"><span class="tag">waves</span><span class="tag">acoustics</span><span class="tag">Fourier analysis</span></div>
         </a>
       </div>
     </section>
@@ -319,58 +373,70 @@
       </div>
       <div class="grid">
         <a class="card" href="https://openphysics.github.io/ElectricFieldOfDreams/" style="--hue: 280;">
-          <div class="card-head">
-            <span class="badge">EF</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/ElectricFieldOfDreams.webp" alt="Electric Field Of Dreams simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">EF</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Electric Field Of Dreams</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>SceneryStack port of the PhET 'Electric Field of Dreams' simulation. Place charged particles and observe Coulomb interactions and an adjustable uniform external field.</p>
+            <div class="tags"><span class="tag">electrostatics</span><span class="tag">electric fields</span><span class="tag">Coulomb's law</span></div>
           </div>
-          <h3>Electric Field Of Dreams</h3>
-          <p>SceneryStack port of the PhET 'Electric Field of Dreams' simulation. Place charged particles and observe Coulomb interactions and an adjustable uniform external field.</p>
-          <div class="tags"><span class="tag">electrostatics</span><span class="tag">electric fields</span><span class="tag">Coulomb's law</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/LadyBug/" style="--hue: 320;">
-          <div class="card-head">
-            <span class="badge">LB</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/LadyBug.webp" alt="Lady Bug simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">LB</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Lady Bug</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>SceneryStack port of the PhET 'Ladybug Motion 2D' simulation. Explore 2D motion, position, velocity, and acceleration using a ladybug on a rotating platform.</p>
+            <div class="tags"><span class="tag">kinematics</span><span class="tag">2D motion</span><span class="tag">rotation</span></div>
           </div>
-          <h3>Lady Bug</h3>
-          <p>SceneryStack port of the PhET 'Ladybug Motion 2D' simulation. Explore 2D motion, position, velocity, and acceleration using a ladybug on a rotating platform.</p>
-          <div class="tags"><span class="tag">kinematics</span><span class="tag">2D motion</span><span class="tag">rotation</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/LunarLander/" style="--hue: 32;">
-          <div class="card-head">
-            <span class="badge">LL</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/LunarLander.webp" alt="Lunar Lander simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">LL</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Lunar Lander</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>SceneryStack port of the classic PhET Flash 'Lunar Lander' simulation. Pilot a lunar module to a soft landing by managing thrust and tilt against gravity.</p>
+            <div class="tags"><span class="tag">gravity</span><span class="tag">forces</span><span class="tag">kinematics</span></div>
           </div>
-          <h3>Lunar Lander</h3>
-          <p>SceneryStack port of the classic PhET Flash 'Lunar Lander' simulation. Pilot a lunar module to a soft landing by managing thrust and tilt against gravity.</p>
-          <div class="tags"><span class="tag">gravity</span><span class="tag">forces</span><span class="tag">kinematics</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/MazeGame/" style="--hue: 55;">
-          <div class="card-head">
-            <span class="badge">MG</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/MazeGame.webp" alt="Maze Game simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">MG</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Maze Game</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>SceneryStack port of the PhET 'Maze Game' simulation. Drive a particle through tile-based mazes using position, velocity, or acceleration control modes.</p>
+            <div class="tags"><span class="tag">kinematics</span><span class="tag">vectors</span><span class="tag">motion</span></div>
           </div>
-          <h3>Maze Game</h3>
-          <p>SceneryStack port of the PhET 'Maze Game' simulation. Drive a particle through tile-based mazes using position, velocity, or acceleration control modes.</p>
-          <div class="tags"><span class="tag">kinematics</span><span class="tag">vectors</span><span class="tag">motion</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/MovingMan/" style="--hue: 188;">
-          <div class="card-head">
-            <span class="badge">MM</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/MovingMan.webp" alt="Moving Man simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">MM</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Moving Man</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>SceneryStack port of the PhET Java 'Moving Man' simulation. Explore 1D kinematics by dragging a man or using position/velocity/acceleration sliders.</p>
+            <div class="tags"><span class="tag">kinematics</span><span class="tag">1D motion</span><span class="tag">graphs</span></div>
           </div>
-          <h3>Moving Man</h3>
-          <p>SceneryStack port of the PhET Java 'Moving Man' simulation. Explore 1D kinematics by dragging a man or using position/velocity/acceleration sliders.</p>
-          <div class="tags"><span class="tag">kinematics</span><span class="tag">1D motion</span><span class="tag">graphs</span></div>
         </a>
         <a class="card" href="https://openphysics.github.io/RadioWaves/" style="--hue: 293;">
-          <div class="card-head">
-            <span class="badge">RW</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          <div class="thumb"><img src="assets/RadioWaves.webp" alt="Radio Waves simulation screenshot" loading="lazy" decoding="async" width="1154" height="753"><span class="badge">RW</span></div>
+          <div class="card-body">
+            <div class="card-head">
+              <h3>Radio Waves</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>SceneryStack port of the PhET 'Radio Waves &amp; Electromagnetic Fields' simulation, rebuilt from the legacy PIXI.js + Backbone version. Wiggle an electron and watch EM radiation propagate.</p>
+            <div class="tags"><span class="tag">electromagnetism</span><span class="tag">radio waves</span><span class="tag">EM fields</span></div>
           </div>
-          <h3>Radio Waves</h3>
-          <p>SceneryStack port of the PhET 'Radio Waves &amp; Electromagnetic Fields' simulation, rebuilt from the legacy PIXI.js + Backbone version. Wiggle an electron and watch EM radiation propagate.</p>
-          <div class="tags"><span class="tag">electromagnetism</span><span class="tag">radio waves</span><span class="tag">EM fields</span></div>
         </a>
       </div>
     </section>

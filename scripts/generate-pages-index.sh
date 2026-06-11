@@ -5,14 +5,51 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 REPOS_JSON="$REPO_ROOT/structure/repos.json"
-OUTPUT="$REPO_ROOT/docs/index.html"
+DOCS_DIR="$REPO_ROOT/docs"
+ASSETS_DIR="$DOCS_DIR/assets"
+OUTPUT="$DOCS_DIR/index.html"
+# Full-size ground-truth screenshots committed in this repo. The lightweight
+# WebP thumbnails served by the page are derived from these.
+SCREENSHOTS_DIR="$REPO_ROOT/screenshots"
+# Workspace holding the sibling sim repos (used only to refresh the originals below).
+WORKSPACE="${OPENPHYSICS_WORKSPACE:-$(cd "$REPO_ROOT/.." && pwd)}"
 
 if ! command -v jq >/dev/null 2>&1; then
   echo "jq is required" >&2
   exit 1
 fi
 
-mkdir -p "$(dirname "$OUTPUT")"
+mkdir -p "$ASSETS_DIR" "$SCREENSHOTS_DIR"
+
+# Width of the generated card thumbnails (looks crisp on ~360px cards at 2x).
+THUMB_WIDTH=760
+MAGICK=""
+if command -v magick >/dev/null 2>&1; then
+  MAGICK="magick"
+elif command -v convert >/dev/null 2>&1; then
+  MAGICK="convert"
+fi
+
+# Build the card thumbnails. The committed full-size PNGs in screenshots/ are the
+# ground truth; when this runs from a full workspace checkout they are first
+# refreshed from the sibling sim repos. Each original is then downscaled to a
+# small WebP under docs/assets/. In CI (only this repo checked out) the already
+# committed originals and thumbnails are used unchanged.
+while IFS= read -r sim; do
+  [[ -z "$sim" ]] && continue
+  original="$SCREENSHOTS_DIR/$sim.png"
+  sibling="$WORKSPACE/$sim/assets/screenshot.png"
+  if [[ -f "$sibling" ]]; then
+    cp "$sibling" "$original"
+  fi
+  [[ -f "$original" ]] || continue
+  if [[ -n "$MAGICK" ]]; then
+    "$MAGICK" "$original" -resize "${THUMB_WIDTH}x" -quality 80 -strip "$ASSETS_DIR/$sim.webp"
+  else
+    # No ImageMagick available: serve the full-size PNG so the card still works.
+    cp "$original" "$ASSETS_DIR/$sim.png"
+  fi
+done < <(jq -r '.repos[] | select(.isSimulation == true and .status == "active") | select(.name | test("cd48"; "i") | not) | .name' "$REPOS_JSON")
 
 # Each line: name|url|hue|topics(comma-separated)@description
 jq_program='
@@ -54,15 +91,30 @@ card_html() {
     done
   fi
 
+  local title_esc thumb_html img=""
+  title_esc="$(html_escape "$title")"
+  if [[ -f "$ASSETS_DIR/${name}.webp" ]]; then
+    img="assets/${name}.webp"
+  elif [[ -f "$ASSETS_DIR/${name}.png" ]]; then
+    img="assets/${name}.png"
+  fi
+  if [[ -n "$img" ]]; then
+    thumb_html="<div class=\"thumb\"><img src=\"${img}\" alt=\"${title_esc} simulation screenshot\" loading=\"lazy\" decoding=\"async\" width=\"1154\" height=\"753\"><span class=\"badge\">${monogram}</span></div>"
+  else
+    thumb_html="<div class=\"thumb placeholder\"><span>${monogram}</span></div>"
+  fi
+
   cat <<CARD
         <a class="card" href="${url}/" style="--hue: ${hue};">
-          <div class="card-head">
-            <span class="badge">${monogram}</span>
-            <span class="card-arrow" aria-hidden="true">&rarr;</span>
+          ${thumb_html}
+          <div class="card-body">
+            <div class="card-head">
+              <h3>${title_esc}</h3>
+              <span class="card-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+            <p>$(html_escape "$desc")</p>
+            <div class="tags">${tags_html}</div>
           </div>
-          <h3>$(html_escape "$title")</h3>
-          <p>$(html_escape "$desc")</p>
-          <div class="tags">${tags_html}</div>
         </a>
 CARD
 }
@@ -228,7 +280,6 @@ total_count="$((new_count + phet_count))"
       position: relative;
       display: flex;
       flex-direction: column;
-      padding: 1.4rem;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -243,8 +294,9 @@ total_count="$((new_count + phet_count))"
       position: absolute;
       inset: 0 0 auto 0;
       height: 3px;
+      z-index: 3;
       background: linear-gradient(90deg, hsl(var(--hue) 85% 65%), hsl(calc(var(--hue) + 45) 85% 62%));
-      opacity: 0.85;
+      opacity: 0.95;
     }
     .card:hover {
       transform: translateY(-4px);
@@ -253,20 +305,60 @@ total_count="$((new_count + phet_count))"
       box-shadow: 0 16px 40px -16px hsl(var(--hue) 80% 55% / 0.55);
     }
 
-    .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    /* Screenshot preview */
+    .thumb {
+      position: relative;
+      aspect-ratio: 1154 / 753;
+      overflow: hidden;
+      background: linear-gradient(135deg, hsl(var(--hue) 45% 16%), hsl(calc(var(--hue) + 45) 45% 12%));
+      border-bottom: 1px solid var(--border);
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .card:hover .thumb img { transform: scale(1.05); }
+    .thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(8, 12, 24, 0.55));
+      pointer-events: none;
+    }
+    /* Fallback monogram tile when a sim has no screenshot committed yet */
+    .thumb.placeholder { display: grid; place-items: center; }
+    .thumb.placeholder span {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: hsl(var(--hue) 75% 80%);
+      opacity: 0.9;
+    }
+
     .badge {
+      position: absolute;
+      left: 0.85rem;
+      bottom: 0.85rem;
+      z-index: 2;
       display: grid;
       place-items: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       letter-spacing: 0.02em;
       color: #fff;
       background: linear-gradient(135deg, hsl(var(--hue) 80% 58%), hsl(calc(var(--hue) + 45) 78% 52%));
-      box-shadow: 0 6px 16px -6px hsl(var(--hue) 80% 55% / 0.7);
+      box-shadow: 0 6px 18px -6px hsl(var(--hue) 80% 50% / 0.95);
     }
+
+    .card-body { display: flex; flex: 1; flex-direction: column; padding: 1.3rem; }
+    .card-head { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.4rem; }
     .card-arrow {
       font-size: 1.2rem;
       color: var(--faint);
@@ -274,8 +366,8 @@ total_count="$((new_count + phet_count))"
     }
     .card:hover .card-arrow { transform: translate(3px, -3px); color: hsl(var(--hue) 85% 70%); }
 
-    .card h3 { margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 650; color: var(--text); }
-    .card p { margin: 0 0 1.1rem; flex: 1; font-size: 0.9rem; color: var(--muted); }
+    .card h3 { margin: 0; font-size: 1.1rem; font-weight: 650; color: var(--text); }
+    .card p { margin: 0.5rem 0 1.1rem; flex: 1; font-size: 0.9rem; color: var(--muted); }
 
     .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
     .tag {
