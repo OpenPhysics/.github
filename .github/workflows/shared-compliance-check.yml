@@ -16,7 +16,9 @@ permissions:
 
 jobs:
   check-single:
-    if: github.event_name == 'workflow_call'
+    # When invoked via `uses:` the event is the caller's (push/pull_request),
+    # never 'workflow_call'; run for those and let check-all own dispatch/schedule.
+    if: github.event_name != 'workflow_dispatch' && github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository under test
