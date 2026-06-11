@@ -19,7 +19,7 @@ new_sims="$(jq -r '
   | select(.isSimulation == true and .status == "active")
   | select(.name | test("cd48"; "i") | not)
   | select(.isPhETPort == false)
-  | "\(.name)|\(.deployedUrl // ("https://openphysics.github.io/" + .name))|@\(.description)"
+  | "\(.name)|\(.deployedUrl // ("https://openphysics.github.io/" + .name))@\(.description)"
 ' "$REPOS_JSON" | sort)"
 
 phet_sims="$(jq -r '
@@ -27,16 +27,16 @@ phet_sims="$(jq -r '
   | select(.isSimulation == true and .status == "active")
   | select(.name | test("cd48"; "i") | not)
   | select(.isPhETPort == true)
-  | "\(.name)|\(.deployedUrl // ("https://openphysics.github.io/" + .name))|@\(.description)"
+  | "\(.name)|\(.deployedUrl // ("https://openphysics.github.io/" + .name))@\(.description)"
 ' "$REPOS_JSON" | sort)"
 
 card_html() {
   local line="$1"
-  local name url desc
+  local name url desc rest
   name="${line%%|*}"
-  url="${line#*|}"
-  url="${url%%@*}"
-  desc="${line#*@}"
+  rest="${line#*|}"
+  url="${rest%%@*}"
+  desc="${rest#*@}"
   url="$(printf '%s' "$url" | sed 's|OpenPhysics|openphysics|g' | sed 's|/$||')"
 
   local title
