@@ -4,6 +4,8 @@
 
 OpenPhysics develops interactive simulations and libraries that make physics intuitive, visual, and accessible. Our work spans classroom-ready OER tools, real-time web simulations, and hardware-interfacing libraries for advanced lab instrumentation.
 
+**[Browse all live simulations →](https://openphysics.github.io/.github/)**
+
 ---
 
 ## Core Interactive Simulations

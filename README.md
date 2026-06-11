@@ -18,6 +18,8 @@ not define their own.
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | Reusable CI workflow (lint, type-check, build) |
 | [`.github/scripts/`](.github/scripts/) | Repo catalog tools, compliance checks, Dependabot sync |
 | [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) | Reusable GitHub Pages deploy workflow |
+| [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | Deploy org simulation index to GitHub Pages |
+| [`docs/`](docs/) | Landing page linking to live simulations ([openphysics.github.io/.github](https://openphysics.github.io/.github/)) |
 | [`.github/workflows/shared-compliance-check.yml`](.github/workflows/shared-compliance-check.yml) | README and repo-structure compliance audit |
 | [`structure/repos.json`](structure/repos.json) | Machine-readable catalog of org repositories |
 

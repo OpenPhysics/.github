@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenPhysics — open-source interactive physics simulations for the web.">
+  <title>OpenPhysics Simulations</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --surface: #141b2f;
+      --surface-hover: #1a2340;
+      --text: #e8edf7;
+      --muted: #9aa8c7;
+      --accent: #5b8def;
+      --accent-soft: rgba(91, 141, 239, 0.15);
+      --border: rgba(255, 255, 255, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(91, 141, 239, 0.18), transparent),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+    header { text-align: center; margin-bottom: 3rem; }
+    header h1 { margin: 0 0 0.75rem; font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 700; letter-spacing: -0.02em; }
+    header p { margin: 0 auto; max-width: 42rem; color: var(--muted); font-size: 1.1rem; }
+    .links { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.5rem; }
+    .links a { color: var(--accent); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid var(--border); border-radius: 999px; background: var(--accent-soft); font-size: 0.9rem; }
+    .links a:hover { background: rgba(91, 141, 239, 0.25); }
+    section { margin-bottom: 2.5rem; }
+    section h2 { margin: 0 0 1rem; font-size: 1.15rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .card { display: flex; flex-direction: column; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: inherit; transition: background 0.15s, border-color 0.15s, transform 0.15s; }
+    .card:hover { background: var(--surface-hover); border-color: rgba(91, 141, 239, 0.35); transform: translateY(-2px); }
+    .card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; color: var(--text); }
+    .card p { margin: 0; flex: 1; font-size: 0.92rem; color: var(--muted); }
+    .card-link { margin-top: 1rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+    footer { margin-top: 3rem; text-align: center; color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>OpenPhysics</h1>
+      <p>Interactive physics simulations built for the web — explore waves, mechanics, optics, quantum circuits, and more.</p>
+      <div class="links">
+        <a href="https://github.com/OpenPhysics">GitHub Organization</a>
+        <a href="https://github.com/OpenPhysics/.github/blob/main/CONTRIBUTING.md">Contributing</a>
+      </div>
+    </header>
+    <section>
+      <h2>Core Simulations</h2>
+      <div class="grid">
+        <a class="card" href="https://openphysics.github.io/DopplerEffect/">
+          <h3>Doppler Effect</h3>
+          <p>Interactive simulation of the Doppler Effect — visualizes how the frequency of sound waves shifts with relative motion between source and observer.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/OpticsLab/">
+          <h3>Optics Lab</h3>
+          <p>Web-based geometric optics simulation. Supports ray sources, parallel and divergent beams, mirrors, lenses, beam splitters, and refraction interfaces.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/OscillationsAndChaos/">
+          <h3>Oscillations And Chaos</h3>
+          <p>Collection of four classical mechanics simulations exploring oscillations and chaos: single spring, double spring, pendulum, and double pendulum.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/QubitSketch/">
+          <h3>Qubit Sketch</h3>
+          <p>Drag-and-drop quantum circuit builder with a live state simulator. Place quantum gates and watch probabilities, amplitudes, Bloch spheres, and measurements update in real time.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/Resonance/">
+          <h3>Resonance</h3>
+          <p>Interactive simulation of resonance in driven oscillating systems. Visualizes driven mass-spring systems and Chladni plate patterns.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/TrackLab/">
+          <h3>Track Lab</h3>
+          <p>Browser-based video motion-analysis tool. Load a video, calibrate real-world distances, and auto-track objects across frames using computer vision.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/WaveComposer/">
+          <h3>Wave Composer</h3>
+          <p>Three-screen VoceVista-style real-time voice-analysis simulation. Analyzes microphone input for waveform, spectrum, and composition.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+      </div>
+    </section>
+    <section>
+      <h2>Classic &amp; PhET Ports</h2>
+      <div class="grid">
+        <a class="card" href="https://openphysics.github.io/ElectricFieldOfDreams/">
+          <h3>Electric Field Of Dreams</h3>
+          <p>SceneryStack port of the PhET 'Electric Field of Dreams' simulation. Place charged particles and observe Coulomb interactions and an adjustable uniform external field.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/LadyBug/">
+          <h3>Lady Bug</h3>
+          <p>SceneryStack port of the PhET 'Ladybug Motion 2D' simulation. Explore 2D motion, position, velocity, and acceleration using a ladybug on a rotating platform.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/LunarLander/">
+          <h3>Lunar Lander</h3>
+          <p>SceneryStack port of the classic PhET Flash 'Lunar Lander' simulation. Pilot a lunar module to a soft landing by managing thrust and tilt against gravity.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/MazeGame/">
+          <h3>Maze Game</h3>
+          <p>SceneryStack port of the PhET 'Maze Game' simulation. Drive a particle through tile-based mazes using position, velocity, or acceleration control modes.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/MovingMan/">
+          <h3>Moving Man</h3>
+          <p>SceneryStack port of the PhET Java 'Moving Man' simulation. Explore 1D kinematics by dragging a man or using position/velocity/acceleration sliders.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+        <a class="card" href="https://openphysics.github.io/RadioWaves/">
+          <h3>Radio Waves</h3>
+          <p>SceneryStack port of the PhET 'Radio Waves & Electromagnetic Fields' simulation, rebuilt from the legacy PIXI.js + Backbone version. Wiggle an electron and watch EM radiation propagate.</p>
+          <span class="card-link">Open simulation →</span>
+        </a>
+      </div>
+    </section>
+    <footer>
+      <p>Built with <a href="https://scenerystack.org/">SceneryStack</a> · MIT License ·
+      <a href="https://github.com/OpenPhysics/.github">OpenPhysics/.github</a></p>
+    </footer>
+  </div>
+</body>
+</html>

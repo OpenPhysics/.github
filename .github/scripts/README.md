@@ -19,6 +19,7 @@ the monorepo checkout.
 | [`lib/repos.sh`](lib/repos.sh) | Bash helper functions for other scripts |
 | [`check-repo-compliance.sh`](check-repo-compliance.sh) | README/CI compliance checks |
 | [`sync-dependabot.sh`](sync-dependabot.sh) | Copy Dependabot configs to sim repos |
+| [`generate-pages-index.sh`](generate-pages-index.sh) | Build `docs/index.html` simulation landing page |
 
 ## parse-repos.sh
 

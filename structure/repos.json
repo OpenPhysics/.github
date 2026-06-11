@@ -11,7 +11,7 @@
       "language": ["Markdown"],
       "framework": null,
       "description": "Organization-level GitHub configuration, community health files, and repo structure metadata.",
-      "deployedUrl": null,
+      "deployedUrl": "https://openphysics.github.io/.github/",
       "physicsTopics": [],
       "screens": null,
       "status": "active"
