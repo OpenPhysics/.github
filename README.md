@@ -4,6 +4,12 @@ Organization-level GitHub configuration for the [OpenPhysics](https://github.com
 organization. Simulation repositories inherit default community health files from this repo when they do
 not define their own.
 
+> **Orchestration lives in [OpenPhysics/Baton](https://github.com/OpenPhysics/Baton).** The reusable CI/CD
+> workflows, cross-repo automation scripts, Dependabot templates, the repository catalog
+> (`structure/repos.json`), and the GitHub Pages simulation landing page all moved there. This repo now
+> holds only the community-health defaults that GitHub requires in the special `.github` repo, plus shared
+> AI-assistant guidance.
+
 ## Contents
 
 | Path | Purpose |
@@ -16,13 +22,8 @@ not define their own.
 | [`LICENSE-MIT`](LICENSE-MIT) | MIT license — used by CD48 hardware libraries (`jscd48`, `tscd48`) |
 | [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/) | Bug report and feature request templates |
 | [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md) | Pull request template |
-| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | Reusable CI workflow (lint, type-check, build) |
-| [`scripts/`](scripts/) | Repo catalog tools, compliance checks, Dependabot sync |
-| [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) | Reusable GitHub Pages deploy workflow |
-| [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | Deploy org simulation index to GitHub Pages |
-| [`docs/`](docs/) | Landing page linking to live simulations ([openphysics.github.io/.github](https://openphysics.github.io/.github/)) |
-| [`.github/workflows/shared-compliance-check.yml`](.github/workflows/shared-compliance-check.yml) | README and repo-structure compliance audit |
-| [`structure/repos.json`](structure/repos.json) | Machine-readable catalog of org repositories |
+| [`profile/README.md`](profile/README.md) | Organization profile page |
+| [`skills/`](skills/) | SceneryStack development reference docs for AI assistants |
 
 ## Default community files
 
@@ -40,57 +41,14 @@ inherit the org default.
 
 Each sim repo keeps a **sim-specific** [`CLAUDE.md`](CLAUDE.md) at its root; shared SceneryStack conventions, bootstrap chain, module paths, and CI live in **this** org [`CLAUDE.md`](CLAUDE.md). Do not add per-repo `AGENTS.md` — use `CLAUDE.md` instead.
 
-## Shared CI
+## Shared CI, automation, and catalog
 
-Each simulation's `.github/workflows/ci.yml` calls the reusable workflow:
+These now live in [OpenPhysics/Baton](https://github.com/OpenPhysics/Baton):
 
-```yaml
-jobs:
-  ci:
-    uses: OpenPhysics/.github/.github/workflows/ci.yml@main
-```
+- Reusable CI/CD workflows — each sim's `.github/workflows/ci.yml` calls
+  `uses: OpenPhysics/Baton/.github/workflows/ci.yml@main`
+- Compliance audit (`shared-compliance-check.yml`) enforcing the six-section README outline
+- Repository catalog (`structure/repos.json`) and the `scripts/` tooling that reads it
+- Dependabot templates (`config/`) and the GitHub Pages landing page (`pages.yml` + `docs/`)
 
-Optional compliance checking (pilot on TemplateSingleSim):
-
-```yaml
-  compliance:
-    uses: OpenPhysics/.github/.github/workflows/shared-compliance-check.yml@main
-    with:
-      repo-name: ${{ github.event.repository.name }}
-```
-
-## Compliance workflow
-
-[`shared-compliance-check.yml`](.github/workflows/shared-compliance-check.yml) runs weekly (Mondays 06:00 UTC)
-and on manual dispatch. It reads [`structure/repos.json`](structure/repos.json), clones each simulation repo,
-and checks:
-
-- **FAIL** if `CONTRIBUTING.md` or `LICENSE` exists at repo root
-- **FAIL** if `README.md` is missing `## Features`, `## Quick Start`, `## Scripts`, `## Tech Stack`, `## License`, or `## Contributing`
-- **FAIL** if `README.md` sections are out of order or include extra top-level sections (only the six standard sections allowed)
-- **FAIL** if `.github/workflows/ci.yml` does not call the shared reusable CI workflow
-
-Simulation READMEs use a fixed six-section outline (in order): **Features → Quick Start → Scripts → Tech Stack → License → Contributing**. Per-sim content lives in **Features** and optional extra rows in **Scripts**; long-form docs belong in `doc/` or `CLAUDE.md`, not the README.
-
-Run locally against a checkout:
-
-```bash
-scripts/check-repo-compliance.sh /path/to/sim-repo
-```
-
-### Repository catalog scripts
-
-See [`scripts/README.md`](scripts/README.md) for tools that parse
-[`structure/repos.json`](structure/repos.json):
-
-```bash
-scripts/parse-repos.sh names --simulation
-scripts/list-repos.sh --json
-scripts/sync-github-metadata.sh --dry-run
-```
-
-## Repository catalog
-
-[`structure/repos.json`](structure/repos.json) lists all OpenPhysics repositories with metadata (simulation
-type, framework, deployed URL, physics topics, etc.). The compliance workflow and org profile README consume
-this file.
+See the [Baton README](https://github.com/OpenPhysics/Baton#readme) for usage.
