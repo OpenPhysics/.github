@@ -3,7 +3,7 @@
 ## Supported versions
 
 Security fixes are applied to the default branch (`main`) of active OpenPhysics
-repositories listed in [structure/repos.json](structure/repos.json).
+repositories listed in [structure/repos.json](https://github.com/OpenPhysics/Baton/blob/main/structure/repos.json).
 
 ## Reporting a vulnerability
 

@@ -13,7 +13,7 @@ Community files (contributing, license, issue templates) live in [OpenPhysics/.g
 | SceneryStack | ^3.0.0 | Simulation framework (PhET-derived) |
 | Vite | ^8 | Build tool and dev server |
 | TypeScript | ^6 | `erasableSyntaxOnly` — no `enum` or `namespace` |
-| Biome | ^2.4 | Linting + formatting (not ESLint, not Prettier) |
+| Biome | ^2.5 | Linting + formatting (not ESLint, not Prettier) |
 | vite-plugin-pwa | ^1 | PWA / offline / installable |
 
 Some sims add Vitest, Playwright, or OpenCV.js — see the sim's `CLAUDE.md` and `package.json`.
