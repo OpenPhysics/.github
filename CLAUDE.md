@@ -4,7 +4,7 @@ General guidance for AI assistants working on **any** OpenPhysics SceneryStack s
 
 Each sim repo has its own `CLAUDE.md` with **sim-specific** context only (architecture, key files, physics, quirks). Read that file first, then use this document for shared conventions.
 
-Community files (contributing, license, issue templates) live in [OpenPhysics/.github](https://github.com/OpenPhysics/.github). Simulation READMEs follow a fixed six-section outline documented in [.github/README.md](README.md).
+Community files (contributing, license, issue templates) live in [OpenPhysics/.github](https://github.com/OpenPhysics/.github). Orchestration — reusable CI/CD workflows, the repo catalog, and the compliance audit — lives in [OpenPhysics/Baton](https://github.com/OpenPhysics/Baton). Simulation READMEs follow a fixed six-section outline enforced by Baton's compliance check.
 
 ## Tech stack
 
@@ -54,7 +54,7 @@ src/
     model/   ← state, physics, step(dt), reset()
     view/    ← Scenery nodes, layout, input
 scripts/generate-icons.ts
-.github/workflows/ci.yml   ← calls OpenPhysics/.github reusable CI
+.github/workflows/ci.yml   ← calls OpenPhysics/Baton reusable CI
 ```
 
 Multi-screen sims add one folder per screen (e.g. `composer-screen/`, `single-oscillator/`). Shared code often lives in `src/common/`.
@@ -225,7 +225,7 @@ npm run lint && npm run check && npm run build
 Each sim's `.github/workflows/ci.yml` calls the reusable workflow:
 
 ```yaml
-uses: OpenPhysics/.github/.github/workflows/ci.yml@main
+uses: OpenPhysics/Baton/.github/workflows/ci.yml@main
 ```
 
 On push/PR to `main`: `npm run check`, `npm run lint`, `npm run icons && npm run build`.
