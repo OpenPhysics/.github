@@ -178,6 +178,21 @@ Import `.ts` sources with `.js` extensions in import paths.
 3. **Colors** — add `ProfileColorProperty` entries to `*Colors.ts`
 4. **Strings** — add keys to all locale JSON files; expose in `StringManager`
 5. **Preferences** — extend `PreferencesModel` options in `src/main.ts` when needed
+6. **Accessibility** — give interactive nodes an `accessibleName`; keep the `ScreenView`'s `screenSummaryContent` and `pdomOrder` current (see below)
+
+## Accessibility
+
+All sims follow one shared accessibility pattern so they behave the same internally. The
+canonical reference is `TemplateSingleSim`; the full convention and per-sim checklist live in
+[OpenPhysics/ACCESSIBILITY.md](https://github.com/OpenPhysics/OpenPhysics/blob/main/ACCESSIBILITY.md).
+Three required layers:
+
+1. **PDOM names** — every interactive node has an `accessibleName` (and `accessibleHelpText` where useful), sourced from `StringManager`'s `a11y` string group.
+2. **Screen summary** — each `ScreenView` registers a `*ScreenSummaryContent` via the `screenSummaryContent` option, with a live `currentDetailsContent`.
+3. **Keyboard** — deterministic traversal order via a wrapper `Node`'s `pdomOrder` (`ScreenView` throws if you set `pdomOrder` on itself), `KeyboardDragListener`/`KeyboardListener` on draggable objects, and a `*KeyboardHelpContent`.
+
+Add a11y strings under an `a11y` key in every locale JSON and expose them via
+`StringManager.getA11yStrings()`. Voicing/sonification is a later phase.
 
 ## Common commands
 
