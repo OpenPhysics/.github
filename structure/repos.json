@@ -193,6 +193,20 @@
       "status": "template"
     },
     {
+      "name": "TheRamp",
+      "type": "simulation",
+      "isSimulation": true,
+      "isPhETPort": true,
+      "isNewSimulation": false,
+      "language": ["TypeScript"],
+      "framework": "SceneryStack",
+      "description": "SceneryStack port of the PhET Java 'The Ramp' simulation. Explore forces on an inclined plane with friction, energy conservation, and applied forces. Features record/playback, force charts, and comparison objects.",
+      "deployedUrl": "https://OpenPhysics.github.io/TheRamp",
+      "physicsTopics": ["forces", "inclined plane", "friction", "energy", "Newton's laws", "kinematics"],
+      "screens": ["Introduction", "More Features"],
+      "status": "active"
+    },
+    {
       "name": "TrackLab",
       "type": "simulation",
       "isSimulation": true,
