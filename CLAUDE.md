@@ -47,8 +47,10 @@ Most single-screen sims follow:
 ```
 src/
   init.ts assert.ts splash.ts brand.ts main.ts
-  *Colors.ts *Namespace.ts
+  *Colors.ts *Constants.ts *Namespace.ts   ← *Namespace.ts at src/ root, never in common/
   i18n/StringManager.ts strings_*.json
+  preferences/
+    *PreferencesModel.ts *PreferencesNode.ts *QueryParameters.ts  ← *QueryParameters.ts is lowercase-first camelCase
   <sim-screen>/
     *Screen.ts
     model/   ← state, physics, step(dt), reset()
@@ -57,7 +59,9 @@ scripts/generate-icons.ts
 .github/workflows/ci.yml   ← calls OpenPhysics/Baton reusable CI
 ```
 
-Multi-screen sims add one folder per screen (e.g. `composer-screen/`, `single-oscillator/`). Shared code often lives in `src/common/`.
+Multi-screen sims add one folder per screen (e.g. `composer-screen/`, `single-oscillator/`). Shared code often lives in `src/common/`. There is no top-level `src/model/` or `src/view/` — those live inside a screen folder.
+
+The full structural convention and per-sim checklist live in [OpenPhysics/CONVENTIONS.md](https://github.com/OpenPhysics/OpenPhysics/blob/main/CONVENTIONS.md) (the structural companion to [ACCESSIBILITY.md](https://github.com/OpenPhysics/OpenPhysics/blob/main/ACCESSIBILITY.md)), enforced by Baton's compliance check.
 
 ## Coding conventions
 
@@ -232,13 +236,24 @@ On push/PR to `main`: `npm run check`, `npm run lint`, `npm run icons && npm run
 
 ## Unit tests (when present)
 
-Vitest tests often live in `__tests__/` next to source:
+Tests are optional, but when a sim has them they live in a **root `tests/` folder** (mirroring
+the source tree), with `tests/setup.ts` and a root `vitest.config.ts` — never co-located next to
+source and never in `__tests__/` directories. This matches `TemplateSingleSim`.
 
 ```typescript
 import { describe, it, expect, beforeEach } from "vitest";
 ```
 
-Co-locate tests with the module they cover; follow patterns in the sim's `CLAUDE.md` if it defines sim-specific test commands.
+```
+tests/
+  setup.ts
+  **/*.test.ts     ← unit tests
+  **/*.spec.ts     ← Playwright specs, if any
+vitest.config.ts   ← include: ["tests/**/*.test.ts"]; setupFiles: ["./tests/setup.ts"]
+```
+
+The vitest `environment` (`happy-dom` default, or `jsdom`/`node`) may vary per sim — document the
+choice in the sim's `CLAUDE.md`. See [OpenPhysics/CONVENTIONS.md §5](https://github.com/OpenPhysics/OpenPhysics/blob/main/CONVENTIONS.md).
 
 ## Git hooks
 
