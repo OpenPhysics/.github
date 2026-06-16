@@ -61,7 +61,7 @@ scripts/generate-icons.ts
 
 Multi-screen sims add one folder per screen (e.g. `composer-screen/`, `single-oscillator/`). Shared code often lives in `src/common/`. There is no top-level `src/model/` or `src/view/` — those live inside a screen folder.
 
-The full structural convention and per-sim checklist live in [OpenPhysics/CONVENTIONS.md](https://github.com/OpenPhysics/OpenPhysics/blob/main/CONVENTIONS.md) (the structural companion to [ACCESSIBILITY.md](https://github.com/OpenPhysics/OpenPhysics/blob/main/ACCESSIBILITY.md)), enforced by Baton's compliance check.
+The full structural convention and per-sim checklist live in [Baton/CONVENTIONS.md](https://github.com/OpenPhysics/Baton/blob/main/CONVENTIONS.md) (the structural companion to [Baton/ACCESSIBILITY.md](https://github.com/OpenPhysics/Baton/blob/main/ACCESSIBILITY.md)), enforced by Baton's compliance check.
 
 ## Coding conventions
 
@@ -188,7 +188,7 @@ Import `.ts` sources with `.js` extensions in import paths.
 
 All sims follow one shared accessibility pattern so they behave the same internally. The
 canonical reference is `TemplateSingleSim`; the full convention and per-sim checklist live in
-[OpenPhysics/ACCESSIBILITY.md](https://github.com/OpenPhysics/OpenPhysics/blob/main/ACCESSIBILITY.md).
+[Baton/ACCESSIBILITY.md](https://github.com/OpenPhysics/Baton/blob/main/ACCESSIBILITY.md).
 Three required layers:
 
 1. **PDOM names** — every interactive node has an `accessibleName` (and `accessibleHelpText` where useful), sourced from `StringManager`'s `a11y` string group.
@@ -253,7 +253,7 @@ vitest.config.ts   ← include: ["tests/**/*.test.ts"]; setupFiles: ["./tests/se
 ```
 
 The vitest `environment` (`happy-dom` default, or `jsdom`/`node`) may vary per sim — document the
-choice in the sim's `CLAUDE.md`. See [OpenPhysics/CONVENTIONS.md §5](https://github.com/OpenPhysics/OpenPhysics/blob/main/CONVENTIONS.md).
+choice in the sim's `CLAUDE.md`. See [Baton/CONVENTIONS.md §5](https://github.com/OpenPhysics/Baton/blob/main/CONVENTIONS.md).
 
 ## Git hooks
 
