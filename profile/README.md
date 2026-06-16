@@ -34,6 +34,7 @@ Modern web-native adaptations of classic interactive physics concepts and educat
 | **[MazeGame](https://github.com/OpenPhysics/MazeGame)** | [Live](https://openphysics.github.io/MazeGame/) | Physics-driven game mechanics designed to teach directional forces and velocity |
 | **[MovingMan](https://github.com/OpenPhysics/MovingMan)** | [Live](https://openphysics.github.io/MovingMan/) | Classic mechanics simulation charting a walking figure's position, velocity, and acceleration graph lines |
 | **[ElectricFieldOfDreams](https://github.com/OpenPhysics/ElectricFieldOfDreams)** | [Live](https://openphysics.github.io/ElectricFieldOfDreams/) | Interactive visualization of electric fields, equipotential lines, and charge dynamics |
+| **[TheRamp](https://github.com/OpenPhysics/TheRamp)** | [Live](https://openphysics.github.io/TheRamp/) | Explore forces, energy, and work on an inclined plane: push objects up a ramp and adjust angle and friction |
 
 **[TemplateSingleSim](https://github.com/OpenPhysics/TemplateSingleSim)** is a starter template and structural architecture for spinning up individual simulations.
 
