@@ -6,6 +6,8 @@ Each sim repo has its own `CLAUDE.md` with **sim-specific** context only (archit
 
 Community files (contributing, license, issue templates) live in [OpenPhysics/.github](https://github.com/OpenPhysics/.github). Orchestration — reusable CI/CD workflows, the repo catalog, and the compliance audit — lives in [OpenPhysics/Baton](https://github.com/OpenPhysics/Baton). Simulation READMEs follow a fixed six-section outline enforced by Baton's compliance check.
 
+This document is the broad shared guide. For a single subsystem (colors, layout, drag listeners, preferences, i18n, accessibility, …) there is a deeper per-topic reference in [`Baton/skills/`](https://github.com/OpenPhysics/Baton/tree/main/skills) — each file says when it applies; see its [index](https://github.com/OpenPhysics/Baton/blob/main/skills/README.md). The structural and accessibility conventions live in [Baton/CONVENTIONS.md](https://github.com/OpenPhysics/Baton/blob/main/CONVENTIONS.md) and [Baton/ACCESSIBILITY.md](https://github.com/OpenPhysics/Baton/blob/main/ACCESSIBILITY.md).
+
 ## Tech stack
 
 | Tool | Version | Notes |
