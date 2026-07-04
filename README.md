@@ -4,11 +4,8 @@ Organization-level GitHub configuration for the [OpenPhysics](https://github.com
 organization. Simulation repositories inherit default community health files from this repo when they do
 not define their own.
 
-> **Orchestration lives in [OpenPhysics/Baton](https://github.com/OpenPhysics/Baton).** The reusable CI/CD
-> workflows, cross-repo automation scripts, Dependabot templates, the repository catalog
-> (`structure/repos.json`), and the GitHub Pages simulation landing page all moved there. This repo now
-> holds only the community-health defaults that GitHub requires in the special `.github` repo, plus shared
-> AI-assistant guidance.
+> **Orchestration lives in [OpenPhysics/Baton](https://github.com/OpenPhysics/Baton).**  This repo 
+> holds the community-health defaults that GitHub requires in the special `.github` repo.
 
 ## Contents
 
