@@ -1,57 +1,50 @@
 # OpenPhysics
 
-> Open-source physics simulations, tools, and educational resources, built for the web.
+> Open-source physics simulations, tools, and documentation, built for the web.
 
-OpenPhysics develops interactive simulations and libraries that make physics intuitive, visual, and accessible. Our work spans classroom-ready OER tools, real-time web simulations, and hardware-interfacing libraries for advanced lab instrumentation.
+OpenPhysics maintains SceneryStack simulations, supporting libraries, a documentation stack, and the tooling that keeps the fleet in sync. The catalog is managed in [Baton](https://github.com/OpenPhysics/Baton/blob/main/structure/repos.json), and this workspace currently contains 28 repositories: 20 simulations, 3 tools, 3 hardware libraries, 1 template, and `.github`.
 
-**[Browse all live simulations →](https://openphysics.github.io/.github/)**
+## Simulations
 
----
-
-## Core Interactive Simulations
-
-High-fidelity visual tools and modeling platforms for physics classrooms and independent exploration, primarily built using SceneryStack.
-
-| Simulation | Live Demo | Description |
+| Repo | Live Demo | What it is |
 | --- | --- | --- |
-| **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** | [Live](https://openphysics.github.io/DopplerEffect/) | Explore wave mechanics, sound propagation, and the Doppler effect using SceneryStack |
-| **[TrackLab](https://github.com/OpenPhysics/TrackLab)** | [Live](https://openphysics.github.io/TrackLab/) | Video modeling, tracking, and analysis platform for physical motion (PWA) |
-| **[OpticsLab](https://github.com/OpenPhysics/OpticsLab)** | [Live](https://openphysics.github.io/OpticsLab/) | Interactive simulation of ray optics and light propagation dynamics |
-| **[Resonance](https://github.com/OpenPhysics/Resonance)** | [Live](https://openphysics.github.io/Resonance/) | A dedicated simulation exploring the resonances of various oscillators |
-| **[OscillationsAndChaos](https://github.com/OpenPhysics/OscillationsAndChaos)** | [Live](https://openphysics.github.io/OscillationsAndChaos/) | Visualizing chaotic systems, pendulums, and complex harmonic motion |
-| **[WaveComposer](https://github.com/OpenPhysics/WaveComposer)** | [Live](https://openphysics.github.io/WaveComposer/) | Interactive wave composition and superposition simulation |
-| **[QubitSketch](https://github.com/OpenPhysics/QubitSketch)** | [Live](https://openphysics.github.io/QubitSketch/) | Visual modeling and simulation tool for qubits and quantum states |
+| **[DopplerEffect](https://github.com/OpenPhysics/DopplerEffect)** | [Live](https://openphysics.github.io/DopplerEffect/) | Sound waves and relative motion |
+| **[ElectricFieldOfDreams](https://github.com/OpenPhysics/ElectricFieldOfDreams)** | [Live](https://openphysics.github.io/ElectricFieldOfDreams/) | Coulomb forces and uniform external fields |
+| **[ExtrasolarPlanets](https://github.com/OpenPhysics/ExtrasolarPlanets)** | [Live](https://openphysics.github.io/ExtrasolarPlanets/) | Radial-velocity and transit exoplanet detection |
+| **[HabitableZones](https://github.com/OpenPhysics/HabitableZones)** | — | Circumstellar and galactic habitability |
+| **[LadyBug](https://github.com/OpenPhysics/LadyBug)** | [Live](https://openphysics.github.io/LadyBug/) | 2D motion, position, velocity, and acceleration |
+| **[LightPropagation](https://github.com/OpenPhysics/LightPropagation)** | [Live](https://openphysics.github.io/LightPropagation/) | Polarizers and wave plates |
+| **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | [Live](https://openphysics.github.io/LunarLander/) | Thrust, tilt, and landing dynamics |
+| **[MazeGame](https://github.com/OpenPhysics/MazeGame)** | [Live](https://openphysics.github.io/MazeGame/) | Tile-based kinematics challenge |
+| **[MovingMan](https://github.com/OpenPhysics/MovingMan)** | [Live](https://openphysics.github.io/MovingMan/) | 1D kinematics with graphs |
+| **[OpticsLab](https://github.com/OpenPhysics/OpticsLab)** | [Live](https://openphysics.github.io/OpticsLab/) | Geometric optics and refraction |
+| **[OscillationsAndChaos](https://github.com/OpenPhysics/OscillationsAndChaos)** | [Live](https://openphysics.github.io/OscillationsAndChaos/) | Springs, pendulums, and chaos |
+| **[QubitSketch](https://github.com/OpenPhysics/QubitSketch)** | [Live](https://openphysics.github.io/QubitSketch/) | Drag-and-drop quantum circuits |
+| **[RadioWaves](https://github.com/OpenPhysics/RadioWaves)** | [Live](https://openphysics.github.io/RadioWaves/) | Electromagnetic radiation and antenna fields |
+| **[Resonance](https://github.com/OpenPhysics/Resonance)** | [Live](https://openphysics.github.io/Resonance/) | Driven oscillators and Chladni patterns |
+| **[RotatingSky](https://github.com/OpenPhysics/RotatingSky)** | [Live](https://openphysics.github.io/RotatingSky/) | Horizon and celestial-sphere motion |
+| **[SolarSystemModels](https://github.com/OpenPhysics/SolarSystemModels)** | [Live](https://openphysics.github.io/SolarSystemModels/) | Ptolemaic and heliocentric models |
+| **[TheRamp](https://github.com/OpenPhysics/TheRamp)** | [Live](https://openphysics.github.io/TheRamp/) | Forces, friction, and energy on a ramp |
+| **[TrackLab](https://github.com/OpenPhysics/TrackLab)** | [Live](https://openphysics.github.io/TrackLab/) | Video motion analysis and object tracking |
+| **[VariableStarPhotometry](https://github.com/OpenPhysics/VariableStarPhotometry)** | [Live](https://openphysics.github.io/VariableStarPhotometry/) | Photometry, registration, and period finding |
+| **[WaveComposer](https://github.com/OpenPhysics/WaveComposer)** | [Live](https://openphysics.github.io/WaveComposer/) | Live voice analysis and composition |
 
-### Classic Kinematics & PhET Ports
+## Tools and docs
 
-Modern web-native adaptations of classic interactive physics concepts and educational mechanics games.
-
-| Simulation | Live Demo | Description |
+| Repo | Live Demo | What it is |
 | --- | --- | --- |
-| **[RadioWaves](https://github.com/OpenPhysics/RadioWaves)** | [Live](https://openphysics.github.io/RadioWaves/) | Explore wave propagation and the behavior of radiation fields |
-| **[LadyBug](https://github.com/OpenPhysics/LadyBug)** | [Live](https://openphysics.github.io/LadyBug/) | Kinematics simulation tracking position, velocity, and acceleration vectors |
-| **[LunarLander](https://github.com/OpenPhysics/LunarLander)** | [Live](https://openphysics.github.io/LunarLander/) | Pilot a probe to the lunar surface: test your intuition for thrust, mass, and gravity |
-| **[MazeGame](https://github.com/OpenPhysics/MazeGame)** | [Live](https://openphysics.github.io/MazeGame/) | Physics-driven game mechanics designed to teach directional forces and velocity |
-| **[MovingMan](https://github.com/OpenPhysics/MovingMan)** | [Live](https://openphysics.github.io/MovingMan/) | Classic mechanics simulation charting a walking figure's position, velocity, and acceleration graph lines |
-| **[ElectricFieldOfDreams](https://github.com/OpenPhysics/ElectricFieldOfDreams)** | [Live](https://openphysics.github.io/ElectricFieldOfDreams/) | Interactive visualization of electric fields, equipotential lines, and charge dynamics |
-| **[TheRamp](https://github.com/OpenPhysics/TheRamp)** | [Live](https://openphysics.github.io/TheRamp/) | Explore forces, energy, and work on an inclined plane: push objects up a ramp and adjust angle and friction |
+| **[Almanach](https://github.com/OpenPhysics/Almanach)** | [Live](https://openphysics.github.io/Almanach/) | SceneryStack documentation and LLM-facing reference material |
+| **[Baton](https://github.com/OpenPhysics/Baton)** | [Live](https://openphysics.github.io/Baton/) | Repo catalog, fleet automation, and shared workflows |
+| **[pyro](https://github.com/OpenPhysics/pyro)** | [Live](https://openphysics.github.io/pyro/) | Browser-based VPython editor |
 
-**[TemplateSingleSim](https://github.com/OpenPhysics/TemplateSingleSim)** is a starter template and structural architecture for spinning up individual simulations.
+## Hardware libraries
 
----
+| Repo | Description | Language |
+| --- | --- | --- |
+| **[jscd48](https://github.com/OpenPhysics/jscd48)** | Browser UI and control layer for the CD48 coincidence counter | JavaScript |
+| **[tscd48](https://github.com/OpenPhysics/tscd48)** | TypeScript library for the CD48 coincidence counter | TypeScript |
+| **[pycd48](https://github.com/OpenPhysics/pycd48)** | Python interface for CD48 data acquisition and automation | Python |
 
-## Hardware Instrumentation & Libraries
+## Template
 
-Cross-platform tools and drivers for interfacing with physical laboratory hardware, specifically optimizing data collection for the **CD48 coincidence counter** used in quantum optics experiments.
-
-| Package | Description | Language |
-| :--- | :--- | :--- |
-| **[tscd48](https://github.com/OpenPhysics/tscd48)** | TypeScript driver and hardware analysis library for the CD48 instrument | TypeScript |
-| **[jscd48](https://github.com/OpenPhysics/jscd48)** | Web-facing browser user interface built directly for the CD48 Coincidence Counter | JavaScript |
-| **[pycd48](https://github.com/OpenPhysics/pycd48)** | Python interface for CD48 data acquisition and automated Jupyter Notebook workflows | Python |
-
----
-
-## VPython
-
-**[pyro](https://github.com/OpenPhysics/pyro)** is a 3D physics rendering framework for web-based VPython environments.
+**[TemplateSingleSim](https://github.com/OpenPhysics/TemplateSingleSim)** is the starting point for new SceneryStack simulations.
