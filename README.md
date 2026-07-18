@@ -49,3 +49,7 @@ These now live in [OpenPhysics/Baton](https://github.com/OpenPhysics/Baton):
 - Fleet conventions (`CONVENTIONS.md`, `ACCESSIBILITY.md`) and SceneryStack AI reference docs (`skills/`)
 
 See the [Baton README](https://github.com/OpenPhysics/Baton#readme) for usage.
+
+The old org Pages URL ([openphysics.github.io/.github](https://openphysics.github.io/.github/))
+redirects to the canonical index at
+[openphysics.github.io/Baton](https://openphysics.github.io/Baton/).
