@@ -54,10 +54,12 @@ Original OpenPhysics labs — optics, quantum circuits, resonance, motion analys
 | **[Light Propagation](https://github.com/OpenPhysics/LightPropagation)** | [Try it](https://openphysics.github.io/LightPropagation/) | Polarizers and wave plates |
 | **[Optics Lab](https://github.com/OpenPhysics/OpticsLab)** | [Try it](https://openphysics.github.io/OpticsLab/) | Geometric optics and refraction |
 | **[Oscillations & Chaos](https://github.com/OpenPhysics/OscillationsAndChaos)** | [Try it](https://openphysics.github.io/OscillationsAndChaos/) | Springs, pendulums, and chaos |
+| **[Oscilloscope](https://github.com/OpenPhysics/Oscilloscope)** | [Try it](https://openphysics.github.io/Oscilloscope/) | Web-based Oscilloscope |
 | **[Qubit Sketch](https://github.com/OpenPhysics/QubitSketch)** | [Try it](https://openphysics.github.io/QubitSketch/) | Drag-and-drop quantum circuits |
 | **[Resonance](https://github.com/OpenPhysics/Resonance)** | [Try it](https://openphysics.github.io/Resonance/) | Driven oscillators and Chladni patterns |
 | **[Track Lab](https://github.com/OpenPhysics/TrackLab)** | [Try it](https://openphysics.github.io/TrackLab/) | Video motion analysis and object tracking |
 | **[Wave Composer](https://github.com/OpenPhysics/WaveComposer)** | [Try it](https://openphysics.github.io/WaveComposer/) | Live voice analysis and composition |
+| **[Zenith](https://github.com/OpenPhysics/Zenith) } [Try it](https://openphysics.github.io/Zenith/) | Planetarium |
 
 ---
 
