@@ -6,7 +6,7 @@ We revive classic teaching simulations (Flash/Java → modern web), ship origina
 
 | | |
 | --- | --- |
-| **26** simulations | SceneryStack · TypeScript · Vite |
+| **27** simulations | SceneryStack · TypeScript · Vite |
 | **NAAP · PhET · original** | Astronomy labs, physics ports, and new work |
 | **Tools & hardware** | Docs, fleet automation, CD48, browser VPython |
 
@@ -50,6 +50,7 @@ Original OpenPhysics labs — optics, quantum circuits, resonance, motion analys
 
 | Simulation | Live | Focus |
 | --- | --- | --- |
+| **[AC Phasor](https://github.com/OpenPhysics/ACPhasor)** | [Try it](https://openphysics.github.io/ACPhasor/) | RLC phasors, impedance, resonance, and AC power |
 | **[Doppler Effect](https://github.com/OpenPhysics/DopplerEffect)** | [Try it](https://openphysics.github.io/DopplerEffect/) | Sound waves and relative motion |
 | **[Light Propagation](https://github.com/OpenPhysics/LightPropagation)** | [Try it](https://openphysics.github.io/LightPropagation/) | Polarizers and wave plates |
 | **[Optics Lab](https://github.com/OpenPhysics/OpticsLab)** | [Try it](https://openphysics.github.io/OpticsLab/) | Geometric optics and refraction |
