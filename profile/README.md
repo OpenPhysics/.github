@@ -59,7 +59,7 @@ Original OpenPhysics labs — optics, quantum circuits, resonance, motion analys
 | **[Resonance](https://github.com/OpenPhysics/Resonance)** | [Try it](https://openphysics.github.io/Resonance/) | Driven oscillators and Chladni patterns |
 | **[Track Lab](https://github.com/OpenPhysics/TrackLab)** | [Try it](https://openphysics.github.io/TrackLab/) | Video motion analysis and object tracking |
 | **[Wave Composer](https://github.com/OpenPhysics/WaveComposer)** | [Try it](https://openphysics.github.io/WaveComposer/) | Live voice analysis and composition |
-| **[Zenith](https://github.com/OpenPhysics/Zenith) } [Try it](https://openphysics.github.io/Zenith/) | Planetarium |
+| **[Zenith](https://github.com/OpenPhysics/Zenith)** | [Try it](https://openphysics.github.io/Zenith/) | Planetarium |
 
 ---
 
