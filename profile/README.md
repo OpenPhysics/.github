@@ -84,7 +84,7 @@ Original OpenPhysics labs — optics, quantum circuits, resonance, motion analys
 
 ## Template
 
-**[TemplateSingleSim](https://github.com/OpenPhysics/TemplateSingleSim)** — starting point for new SceneryStack simulations (accessible by default).
+**[SceneryStackTemplate](https://github.com/OpenPhysics/SceneryStackTemplate)** — GitHub template for new SceneryStack sims — one or N screens (accessible by default).
 
 ---
 

@@ -189,7 +189,7 @@ Import `.ts` sources with `.js` extensions in import paths.
 ## Accessibility
 
 All sims follow one shared accessibility pattern so they behave the same internally. The
-canonical reference is `TemplateSingleSim`; the full convention and per-sim checklist live in
+canonical reference is `SceneryStackTemplate`; the full convention and per-sim checklist live in
 [Baton/ACCESSIBILITY.md](https://github.com/OpenPhysics/Baton/blob/main/ACCESSIBILITY.md).
 Three required layers:
 
@@ -240,7 +240,7 @@ On push/PR to `main`: `npm run check`, `npm run lint`, `npm run icons && npm run
 
 Tests are optional, but when a sim has them they live in a **root `tests/` folder** (mirroring
 the source tree), with `tests/setup.ts` and a root `vitest.config.ts` — never co-located next to
-source and never in `__tests__/` directories. This matches `TemplateSingleSim`.
+source and never in `__tests__/` directories. This matches `SceneryStackTemplate`.
 
 ```typescript
 import { describe, it, expect, beforeEach } from "vitest";
