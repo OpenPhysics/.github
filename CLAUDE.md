@@ -213,7 +213,7 @@ npm run lint && npm run check && npm run build
 | `npm start` / `npm run dev` | Vite dev server → http://localhost:5173 |
 | `npm run build` | Type-check + production build → `dist/` |
 | `npm run preview` | Preview production build |
-| `npm run check` | TypeScript (`tsc --noEmit`) |
+| `npm run check` | TypeScript (`tsc --noEmit` on app, scripts, and tests) |
 | `npm run lint` | Biome check |
 | `npm run format` | Biome format |
 | `npm run fix` | Biome check --write |
