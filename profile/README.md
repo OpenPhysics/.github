@@ -6,7 +6,7 @@ We revive classic teaching simulations (Flash/Java → modern web), ship origina
 
 | | |
 | --- | --- |
-| **28** simulations | SceneryStack · TypeScript · Vite |
+| **29** simulations | SceneryStack · TypeScript · Vite |
 | **NAAP · PhET · original** | Astronomy labs, physics ports, and new work |
 | **Tools & hardware** | Docs, fleet automation, CD48, browser VPython |
 
@@ -60,6 +60,7 @@ Original OpenPhysics labs — optics, quantum circuits, resonance, motion analys
 | **[Precession](https://github.com/OpenPhysics/Precession)** | [Try it](https://openphysics.github.io/Precession/) | Rigid-body precession, nutation, and torque-free tumbling |
 | **[Qubit Sketch](https://github.com/OpenPhysics/QubitSketch)** | [Try it](https://openphysics.github.io/QubitSketch/) | Drag-and-drop quantum circuits |
 | **[Resonance](https://github.com/OpenPhysics/Resonance)** | [Try it](https://openphysics.github.io/Resonance/) | Driven oscillators and Chladni patterns |
+| **[Special Relativity](https://github.com/OpenPhysics/SpecialRelativity)** | [Try it](https://openphysics.github.io/SpecialRelativity/) | Light clock, Minkowski spacetime diagrams, twin paradox, relativistic Doppler |
 | **[Stern–Gerlach](https://github.com/OpenPhysics/SternGerlach)** | [Try it](https://openphysics.github.io/SternGerlach/) | Spin analyzers and quantum spin projections |
 | **[Track Lab](https://github.com/OpenPhysics/TrackLab)** | [Try it](https://openphysics.github.io/TrackLab/) | Video motion analysis and object tracking |
 | **[Wave Composer](https://github.com/OpenPhysics/WaveComposer)** | [Try it](https://openphysics.github.io/WaveComposer/) | Live voice analysis and composition |
