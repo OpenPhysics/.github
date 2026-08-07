@@ -6,7 +6,7 @@ We revive classic teaching simulations (Flash/Java → modern web), ship origina
 
 | | |
 | --- | --- |
-| **30** simulations | SceneryStack · TypeScript · Vite |
+| **32** simulations | SceneryStack · TypeScript · Vite |
 | **NAAP · PhET · original** | Astronomy labs, physics ports, and new work |
 | **Tools & hardware** | Docs, fleet automation, CD48, browser VPython |
 
@@ -58,12 +58,14 @@ Original OpenPhysics labs — optics, quantum circuits, resonance, motion analys
 | **[Optics Lab](https://github.com/OpenPhysics/OpticsLab)** | [Try it](https://openphysics.github.io/OpticsLab/) | Geometric optics and refraction |
 | **[Oscillations & Chaos](https://github.com/OpenPhysics/OscillationsAndChaos)** | [Try it](https://openphysics.github.io/OscillationsAndChaos/) | Springs, pendulums, and chaos |
 | **[Oscilloscope](https://github.com/OpenPhysics/Oscilloscope)** | [Try it](https://openphysics.github.io/Oscilloscope/) | Bench scope: function generator, mic, trigger, FFT |
+| **[Plate Tectonics](https://github.com/OpenPhysics/PlateTectonics)** | [Try it](https://openphysics.github.io/PlateTectonics/) | Plate boundaries, earthquakes, volcanoes, cross-sections, and 50 Myr reconstruction |
 | **[Precession](https://github.com/OpenPhysics/Precession)** | [Try it](https://openphysics.github.io/Precession/) | Rigid-body precession, nutation, and torque-free tumbling |
 | **[Qubit Sketch](https://github.com/OpenPhysics/QubitSketch)** | [Try it](https://openphysics.github.io/QubitSketch/) | Drag-and-drop quantum circuits |
 | **[Resonance](https://github.com/OpenPhysics/Resonance)** | [Try it](https://openphysics.github.io/Resonance/) | Driven oscillators and Chladni patterns |
 | **[Special Relativity](https://github.com/OpenPhysics/SpecialRelativity)** | [Try it](https://openphysics.github.io/SpecialRelativity/) | Light clock, Minkowski spacetime diagrams, twin paradox, relativistic Doppler |
 | **[Stern–Gerlach](https://github.com/OpenPhysics/SternGerlach)** | [Try it](https://openphysics.github.io/SternGerlach/) | Spin analyzers and quantum spin projections |
 | **[Track Lab](https://github.com/OpenPhysics/TrackLab)** | [Try it](https://openphysics.github.io/TrackLab/) | Video motion analysis and object tracking |
+| **[Vernier Scales](https://github.com/OpenPhysics/VernierScales)** | [Try it](https://openphysics.github.io/VernierScales/) | Vernier calipers, micrometers, and reading practice |
 | **[Wave Composer](https://github.com/OpenPhysics/WaveComposer)** | [Try it](https://openphysics.github.io/WaveComposer/) | Live voice analysis and composition |
 | **[Zenith](https://github.com/OpenPhysics/Zenith)** | [Try it](https://openphysics.github.io/Zenith/) | Planetarium sky from latitude, longitude, LST |
 
@@ -74,6 +76,7 @@ Original OpenPhysics labs — optics, quantum circuits, resonance, motion analys
 | Repo | Live | What it is |
 | --- | --- | --- |
 | **[Almanach](https://github.com/OpenPhysics/Almanach)** | [Docs](https://openphysics.github.io/Almanach/) | SceneryStack documentation and LLM-facing reference |
+| **[Baseline](https://github.com/OpenPhysics/Baseline)** | — | Upstream baselines and ground-truth snapshots for sims |
 | **[Baton](https://github.com/OpenPhysics/Baton)** | [Index](https://openphysics.github.io/Baton/) | Repo catalog, fleet automation, and shared workflows |
 | **[pyro](https://github.com/OpenPhysics/pyro)** | [Try it](https://openphysics.github.io/pyro/) | Browser-based VPython editor |
 
