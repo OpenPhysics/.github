@@ -22,7 +22,7 @@ Open-source [SceneryStack](https://scenerystack.org/) simulations — NAAP astro
 
 <br />
 
-![32 simulations](https://img.shields.io/badge/32-simulations-0f2744?style=flat-square)
+![37 simulations](https://img.shields.io/badge/37-simulations-0f2744?style=flat-square)
 ![SceneryStack](https://img.shields.io/badge/SceneryStack-TypeScript-1a4a7a?style=flat-square)
 ![Vite](https://img.shields.io/badge/build-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![License](https://img.shields.io/badge/license-AGPL--3.0-2d6a4f?style=flat-square)
@@ -82,6 +82,10 @@ Optics, quantum circuits, resonance, Earth science, motion analysis, and more.
 | **[Carnot Heat Engine](https://github.com/OpenPhysics/CarnotHeatEngine)** | [Try it](https://openphysics.github.io/CarnotHeatEngine/) | Carnot cycle: PV/TS diagrams, efficiency, refrigerator & heat pump |
 | **[Crystal Lattice](https://github.com/OpenPhysics/CrystalLattice)** | [Try it](https://openphysics.github.io/CrystalLattice/) | Bravais lattices, cubic cells, close packing, Miller indices, quasicrystals |
 | **[Doppler Effect](https://github.com/OpenPhysics/DopplerEffect)** | [Try it](https://openphysics.github.io/DopplerEffect/) | Sound waves and relative motion |
+| **[Field Boundary](https://github.com/OpenPhysics/FieldBoundary)** | [Try it](https://openphysics.github.io/FieldBoundary/) | Maxwell boundary conditions for E/D and B/H at a planar interface |
+| **[Fluid Dynamics](https://github.com/OpenPhysics/FluidDynamics)** | [Try it](https://openphysics.github.io/FluidDynamics/) | Intro and Lab screens for interactive fluid flow |
+| **[Heat Transfer](https://github.com/OpenPhysics/HeatTransfer)** | [Try it](https://openphysics.github.io/HeatTransfer/) | WebGPU heat field: conduction, convection, transport, and materials |
+| **[Interferometry Lab](https://github.com/OpenPhysics/InterferometryLab)** | [Try it](https://openphysics.github.io/InterferometryLab/) | Michelson, Mach-Zehnder, and Fabry-Perot interferometers |
 | **[Light Propagation](https://github.com/OpenPhysics/LightPropagation)** | [Try it](https://openphysics.github.io/LightPropagation/) | Polarizers and wave plates |
 | **[Optics Lab](https://github.com/OpenPhysics/OpticsLab)** | [Try it](https://openphysics.github.io/OpticsLab/) | Geometric optics and refraction |
 | **[Oscillations & Chaos](https://github.com/OpenPhysics/OscillationsAndChaos)** | [Try it](https://openphysics.github.io/OscillationsAndChaos/) | Springs, pendulums, and chaos |
@@ -91,6 +95,7 @@ Optics, quantum circuits, resonance, Earth science, motion analysis, and more.
 | **[Qubit Sketch](https://github.com/OpenPhysics/QubitSketch)** | [Try it](https://openphysics.github.io/QubitSketch/) | Drag-and-drop quantum circuits |
 | **[Resonance](https://github.com/OpenPhysics/Resonance)** | [Try it](https://openphysics.github.io/Resonance/) | Driven oscillators and Chladni patterns |
 | **[Special Relativity](https://github.com/OpenPhysics/SpecialRelativity)** | [Try it](https://openphysics.github.io/SpecialRelativity/) | Light clock, Minkowski spacetime diagrams, twin paradox, relativistic Doppler |
+| **[Standing Waves](https://github.com/OpenPhysics/StandingWaves)** | [Try it](https://openphysics.github.io/StandingWaves/) | Longitudinal standing waves in pipes: reflection, phase, harmonics |
 | **[Stern–Gerlach](https://github.com/OpenPhysics/SternGerlach)** | [Try it](https://openphysics.github.io/SternGerlach/) | Spin analyzers and quantum spin projections |
 | **[Track Lab](https://github.com/OpenPhysics/TrackLab)** | [Try it](https://openphysics.github.io/TrackLab/) | Video motion analysis and object tracking |
 | **[Vernier Scales](https://github.com/OpenPhysics/VernierScales)** | [Try it](https://openphysics.github.io/VernierScales/) | Vernier calipers, micrometers, and reading practice |
