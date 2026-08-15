@@ -240,6 +240,16 @@ uses: OpenPhysics/Baton/.github/workflows/ci.yml@main
 
 On push/PR to `main`: `npm run check`, `npm run lint`, `npm run icons && npm run build`.
 
+Each sim's `.github/workflows/deploy.yml` calls the reusable Pages deploy and must allow
+`workflow_dispatch` (publish without a push, same pair of triggers as Baton's `pages.yml`):
+
+```yaml
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+```
+
 ## Unit tests (when present)
 
 Tests are optional, but when a sim has them they live in a **root `tests/` folder** (mirroring
