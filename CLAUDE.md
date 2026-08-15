@@ -58,6 +58,10 @@ src/
     model/   ← state, physics, step(dt), reset()
     view/    ← Scenery nodes, layout, input
 scripts/generate-icons.ts
+public/
+  favicon.ico
+  icons/icon.svg  icon-192.png  icon-512.png  apple-touch-icon.png
+  screenshots/wide.png  narrow.png
 .github/workflows/ci.yml   ← calls OpenPhysics/Baton reusable CI
 ```
 
