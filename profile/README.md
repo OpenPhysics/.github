@@ -21,6 +21,9 @@ hardware.
 | [vscene2d](https://github.com/OpenPhysics/vscene2d) | Build VPython-style 2D physics scenes directly in Jupyter. |
 | [pycd48](https://github.com/OpenPhysics/pycd48) | Control a CD48 coincidence counter from Python over USB serial. |
 | [tscd48](https://github.com/OpenPhysics/tscd48) | Use a CD48 coincidence counter in the browser through the Web Serial API. |
+| [PASCO BLE Examples](https://github.com/OpenPhysics/pasco-BLE-examples) | Read PASCO Wireless sensors from web pages over Web Bluetooth. |
+| [Tektronix Oscilloscope](https://github.com/OpenPhysics/tektronixOscilloscope) | Capture waveforms from a Tektronix TBS1072B-EDU oscilloscope in the browser over WebUSB. |
+| [FeelTech Function Generator](https://github.com/OpenPhysics/feelTechFunctionGenerator) | Control a FeelTech FY3200S function generator from the browser over Web Serial. |
 | [Relay](https://github.com/OpenPhysics/relay) | Reusable automation and CI/CD infrastructure for OpenPhysics projects. |
 
 ## Our approach
