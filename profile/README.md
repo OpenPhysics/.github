@@ -24,7 +24,7 @@ hardware.
 | [PASCO BLE Examples](https://github.com/OpenPhysics/pasco-BLE-examples) | Read PASCO Wireless sensors from web pages over Web Bluetooth. |
 | [Tektronix Oscilloscope](https://github.com/OpenPhysics/tektronixOscilloscope) | Capture waveforms from a Tektronix TBS1072B-EDU oscilloscope in the browser over WebUSB. |
 | [FeelTech Function Generator](https://github.com/OpenPhysics/feelTechFunctionGenerator) | Control a FeelTech FY3200S function generator from the browser over Web Serial. |
-| [Relay](https://github.com/OpenPhysics/relay) | Reusable automation and CI/CD infrastructure for OpenPhysics projects. |
+| [relay](https://github.com/OpenPhysics/relay) | Reusable automation and CI/CD infrastructure for OpenPhysics projects. |
 
 ## Our approach
 
